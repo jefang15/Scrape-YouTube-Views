@@ -1,4 +1,4 @@
-""" Web Scraping - YouTube Views """
+""" Scrape - YouTube Views """
 
 
 
@@ -56,7 +56,7 @@ video_links = [
     'https://www.youtube.com/watch?v=mH9kYn4L8TI',  # Something in the Water
     'https://www.youtube.com/watch?v=kxOYvI0pfLo',  # Little Toy Guns
 
-    # Story Teller
+    # Storyteller
     'https://www.youtube.com/watch?v=3ealNayCkaU',  # Smoke Break
     'https://www.youtube.com/watch?v=eg50JGPEoo8',  # Heartbeat
     'https://www.youtube.com/watch?v=N2-yVryNjUM',  # Church Bells
@@ -83,12 +83,13 @@ video_links = [
 
     'https://www.youtube.com/watch?v=Zc3cxj5pDIs',  # If I Didn't Love You
 
+    # CU7
     'https://www.youtube.com/watch?v=4Y7flhznvnE'  # Ghost Story (Official Lyric Video)
 
     ]
 
 
-" Blank list to store data "
+" Blank List to Store Scraped Data "
 out = []
 
 
@@ -106,17 +107,11 @@ def youtube_info(url):
     # Date pulled
     pull_date = date.today()
 
+    # Upload Date
+    upload_date = soup.find("div", {"id": "info-strings"}).find("yt-formatted-string").text
+
     # Channel Name
-    try:
-        channel_tag = soup.find("yt-formatted-string", {"class": "ytd-channel-name"}).find("a")
-        channel_name = channel_tag.text
-    except Exception as e:
-        try:
-            channel_name = soup.find('a', {'id': 'text-container', 'class': 'yt-simple-endpoint style-scope '
-                                                              'yt-formatted-string'}).text
-        except Exception as e:
-            print(e)
-            channel_name = ""
+    channel_name = soup.find("yt-formatted-string", {"class": "ytd-channel-name"}).find("a").text
 
     # Video Title
     video_title = soup.find("div", {"id": "container", "class": "style-scope ytd-video-primary-info-renderer"}).find(
@@ -135,26 +130,29 @@ def youtube_info(url):
     # video_likes = text_yt_formatted_strings[0].text
     # video_dislikes = text_yt_formatted_strings[1].text
 
-    # Upload Date
-    # video_date = soup.find("div", {"id": "date"}).text[1:]
-
     # Append information about each individual video to compiled list
-    innerlist = [pull_date, channel_name, video_title, video_views]
+    innerlist = [pull_date, upload_date, channel_name, video_title, video_views]
+
+    # Append inner list to outer list
     out.append(innerlist)
 
 
-" Scrape Data for Each Video Link in List "
+" Apply Function: Scrape Data for Each Video Link in List "
 for video in video_links:
     youtube_info(video)
 
 
 " Create DataFrame from List of Scraped Video Information "
-df_columns = ['Date', 'Channel', 'Video', 'Views']
+df_columns = ['Date', 'Upload Date', 'Channel', 'Video', 'Views']
 scraped_data = pd.DataFrame(out, columns=df_columns)
 
 
 " Clean new DataFrame "
 scraped_data["Date"] = pd.to_datetime(scraped_data["Date"])
+scraped_data["Upload Date"] = scraped_data["Upload Date"]\
+    .str.replace(".*(Premiered)", "", regex=True)\
+    .str.lstrip()
+scraped_data["Upload Date"] = pd.to_datetime(scraped_data["Upload Date"])
 scraped_data['Channel'] = scraped_data['Channel'].str.replace("BRADPAISLEY", "Brad Paisley")
 scraped_data['Video'] = scraped_data['Video']\
     .str.replace(".*(- )", "", regex=True)\
@@ -163,34 +161,10 @@ scraped_data['Video'] = scraped_data['Video']\
     .str.replace("(ft.).*", "", regex=True)\
     .str.replace('"', "")\
     .str.rstrip()
-# scraped_data["Upload Date"] = scraped_data["Upload Date"]\
-#     .str.replace(".*(Premiered)", "", regex=True)\
-#     .str.lstrip()
-# scraped_data["Upload Date"] = pd.to_datetime(scraped_data["Upload Date"])
 
 
 " Import Previously Scraped Data "
-existing_data = pd.read_csv("Python Projects/Youtube Views/YouTube Views.csv", parse_dates=[0])
-
-
-" Import Video Metadata "
-# metadata = pd.read_csv("Youtube Views/Video Metadata.csv", parse_dates=[0])
-#
-# # Merge existing data with metadata
-# df_export_metadata = existing_data.merge(
-#     metadata, how='left', on=['Video'])
-#
-# df_export_metadata.loc[
-#     df_export_metadata['Video'] == "If I Didn't Love You",
-#     'Channel'] = 'Jason Aldean'
-#
-# existing_data = df_export_metadata[['Date', 'Channel', 'Video', 'Views']]
-#
-# # Print as table
-# print(tabulate(df_export_metadata, headers='keys', tablefmt='plain', showindex=False))
-#
-# #  Export to CSV
-# df_export_metadata.to_csv("Youtube Views/YouTube Views with Metadata.csv", index=False)
+existing_data = pd.read_csv("Projects/Scrape-Youtube-Views/Output/YouTube Views.csv", parse_dates=[0])
 
 
 " Append New Data to Existing Data "
@@ -200,16 +174,41 @@ df_export = pd.concat([existing_data, scraped_data]).reset_index(drop=True)
 
 
 " Export to CSV "
-df_export.to_csv("Python Projects/Youtube Views/YouTube Views.csv", index=False)
+df_export.to_csv("Projects/Scrape-Youtube-Views/Output/YouTube Views.csv", index=False)
 # Print as table
 print(tabulate(df_export, headers='keys', tablefmt='plain', showindex=False))
 
 
 
-""" Analysis """
 
 
-" Views per Month "
+
+
+""" Analysis - Views Since Day of Release """
+# Show number of views based on days from upload date
+
+day_of_release = df_export
+
+# Calculate days since upload date
+day_of_release['Days Since Release'] = pd.to_datetime(day_of_release['Date']) - pd.to_datetime(day_of_release['Upload Date'])
+
+# Convert timedelta to integer
+day_of_release['Days Since Release'] = day_of_release['Days Since Release'].dt.days.astype('int16')
+day_of_release.dtypes
+
+# Sort
+day_of_release = day_of_release.sort_values(by=['Video', 'Date']).reset_index(drop=True)
+day_of_release.to_csv("Projects/Scrape-Youtube-Views/test.csv", index=False)
+
+# Filter
+day_of_release_filter = day_of_release.loc[(day_of_release['Upload Date'] >= min(day_of_release['Date']))]
+
+# TODO: Create small multiples graph showing views since release date with all video lines greyed out in each subplot .
+
+
+
+
+""" Analysis - Views per Month """
 
 df_analysis = df_export
 
@@ -244,12 +243,10 @@ df_monthly_views_final = df_monthly_views[['Date', 'Video', 'Monthly_Views']]
 print(tabulate(df_monthly_views_final, headers='keys', tablefmt='plain', showindex=False))
 
 
-
-""" Plot """
-
-
 " Scatter Plot "
 # Single plot with monthly view counts for each video via Matplotlib
+
+# TODO: change to line plot
 
 plt.style.use('seaborn-notebook')  # Set style
 fig, ax = plt.subplots(figsize=(13, 8))  # Set figure
@@ -296,80 +293,8 @@ plt.show()
 
 
 
-# TODO: Figure out and fix labels
-" Attempt 2 "
-
-# Assign Colors to Videos
-color_labels = df_monthly_views_final['Video'].unique()
-rgb_values = sns.color_palette("plasma", len(color_labels))
-color_map = dict(zip(color_labels, rgb_values))
-color_map_df = pd.DataFrame(list(color_map.items()), columns=['Video', 'Color'])
-print(color_map_df)
-
-df_monthly_views_colors = df_monthly_views_final.merge(
-    color_map_df, how='left', on=['Video'])
-print(df_monthly_views_colors)
-
-
-plt.style.use('seaborn-notebook')  # Set style
-fig, ax = plt.subplots(figsize=(13, 8))  # Set figure
-
-# Plot
-grouped = df_monthly_views_colors.groupby('Video')
-print(df_monthly_views_colors.groupby('Video').groups)
-
-for i in color_map:
-    plt.scatter(
-        x=df_monthly_views_colors['Date'],
-        y=df_monthly_views_colors['Monthly_Views'],
-        color=df_monthly_views_colors['Color'],
-        s=150,
-        alpha=0.9,
-        edgecolors='white',
-        linewidth=1,
-        label=i)
-
-# Titles and axis labels
-plt.title('Youtube Views of CU Singles',
-          fontweight='bold',
-          fontsize=20)
-plt.xlabel('Date',
-           fontweight='bold',
-           size=12)
-plt.ylabel('Monthly Views',
-           fontweight='bold',
-           size=12)
-
-# Format axes
-ax.xaxis.set_major_formatter(DateFormatter("%b %Y"))  # Format x axis date
-ax.xaxis.set_major_locator(md.MonthLocator(range(1, 13)))  # Format frequency of x axis marks
-ax.set_ylim([0, 3000000])  # Y axis range
-plt.yticks(np.arange(0, 3000001, 500000))  # Set y axis tick range and intervals; +1 needed to show last tick
-ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))  # Format y
-# axis thousands
-
-plt.tight_layout()  # Fit graph to window
-plt.legend()
-mplcursors.cursor(hover=True)
-plt.show()
-
-
-
-"""
-Sources:
-https://stackoverflow.com/questions/26139423/plot-different-color-for-different-categorical-levels-using-matplotlib
-https://matplotlib.org/stable/gallery/lines_bars_and_markers/scatter_with_legend.html
-https://kanoki.org/2020/08/30/matplotlib-scatter-plot-color-by-category-in-python/
-https://stackoverflow.com/questions/25408393/getting-individual-colors-from-a-color-map-in-matplotlib
-https://www.tutorialspoint.com/python_pandas/python_pandas_groupby.htm
-https://matplotlib.org/stable/gallery/lines_bars_and_markers/scatter_with_legend.html
-"""
-
-
-
-
-
-" Small Multiples "
+""" Analysis - Total Views Over Time """
+# Small Multiples
 # Total view counts for all videos over time
 
 # TODO: fix plot, likely due to no longer formatting views variable as string. Use code from plot above to format y
