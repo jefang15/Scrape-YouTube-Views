@@ -205,6 +205,10 @@ day_of_release_filter = day_of_release.loc[(day_of_release['Upload Date'] >= min
 
 # TODO: Create small multiples graph showing views since release date with all video lines greyed out in each subplot .
 
+# https://mytableaujourney.com/2020/05/12/spaghetti-lines-for-the-win-and-how-to-control-the-size-of-your-marks-in-tableau/
+# https://www.data-to-viz.com/caveat/spaghetti.html
+# https://python-graph-gallery.com/123-highlight-a-line-in-line-plot
+# https://python-graph-gallery.com/125-small-multiples-for-line-chart
 
 
 
