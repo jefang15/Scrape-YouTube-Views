@@ -89,11 +89,9 @@ video_links = [
     ]
 
 
-" Blank List to Store Scraped Data "
 out = []
 
 
-" Function "
 def youtube_info(url):
     session = HTMLSession()  # init an HTML Session
     headers = {"User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"}
@@ -137,7 +135,6 @@ def youtube_info(url):
     out.append(innerlist)
 
 
-" Apply Function: Scrape Data for Each Video Link in List "
 for video in video_links:
     youtube_info(video)
 
@@ -147,7 +144,7 @@ df_columns = ['Date', 'Upload Date', 'Channel', 'Video', 'Views']
 scraped_data = pd.DataFrame(out, columns=df_columns)
 
 
-" Clean new DataFrame "
+" Clean New DataFrame "
 scraped_data["Date"] = pd.to_datetime(scraped_data["Date"])
 scraped_data["Upload Date"] = scraped_data["Upload Date"]\
     .str.replace(".*(Premiered)", "", regex=True)\
@@ -184,8 +181,8 @@ print(tabulate(df_export, headers='keys', tablefmt='plain', showindex=False))
 
 
 
-""" Analysis - Views Since Day of Release """
-# Show number of views based on days from upload date
+" Analysis - Views Since Day of Release "
+# Show number of views based on days from upload date to show the fastest risers
 
 day_of_release = df_export
 
@@ -212,7 +209,8 @@ day_of_release_filter = day_of_release.loc[(day_of_release['Upload Date'] >= min
 
 
 
-""" Analysis - Views per Month """
+" Analysis - Views per Month "
+# Shows which videos consistently garner the most views and any deviations from average
 
 df_analysis = df_export
 
@@ -297,9 +295,8 @@ plt.show()
 
 
 
-""" Analysis - Total Views Over Time """
-# Small Multiples
-# Total view counts for all videos over time
+" Analysis - Total Views Over Time "
+# Small Multiples; total view counts for all videos over time
 
 # TODO: fix plot, likely due to no longer formatting views variable as string. Use code from plot above to format y
 #  axis values.
