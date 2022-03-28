@@ -28,7 +28,6 @@ Date,Upload Date,Channel,Video,Views
 2021-04-11,2018-09-11,Carrie Underwood,Love Wins,14101138
 2021-04-11,2019-06-07,Carrie Underwood,Southbound,17028760
 2021-04-11,2019-11-20,Carrie Underwood,Drinking Alone,13819309
-2021-04-11,2020-11-20,Carrie Underwood,Hallelujah,61334
 2021-04-11,2021-04-05,Carrie Underwood,How Great Thou Art,232404
 2021-04-11,2021-04-05,Carrie Underwood,Nothing But The Blood Of Jesus,108115
 2021-04-12,2010-03-08,Carrie Underwood,"Jesus, Take The Wheel",70762540
@@ -4229,225 +4228,262 @@ Date,Upload Date,Channel,Video,Views
 2022-03-20,2021-09-03,Carrie Underwood,Only Us,2142207
 2022-03-20,2021-09-08,Jason Aldean,If I Didn't Love You,16174969
 2022-03-20,2022-03-17,Carrie Underwood,Ghost Story,224817
-2022-03-21,2010-03-08 00:00:00,Carrie Underwood,"Jesus, Take The Wheel",77455153
-2022-03-21,2009-10-02 00:00:00,Carrie Underwood,Don't Forget To Remember Me,22283127
-2022-03-21,2009-10-02 00:00:00,Carrie Underwood,Before He Cheats,144715421
-2022-03-21,2009-10-02 00:00:00,Carrie Underwood,Wasted,30859543
-2022-03-21,2009-10-02 00:00:00,Carrie Underwood,So Small,32719703
-2022-03-21,2009-10-02 00:00:00,Carrie Underwood,All-American Girl,36486067
-2022-03-21,2009-10-02 00:00:00,Carrie Underwood,Last Name,27806196
-2022-03-21,2009-10-02 00:00:00,Carrie Underwood,Just A Dream,87758278
-2022-03-21,2017-12-04 00:00:00,Carrie Underwood,I Told You So,3503147
-2022-03-21,2009-11-14 00:00:00,Carrie Underwood,Cowboy Casanova,39265586
-2022-03-21,2010-01-20 00:00:00,Carrie Underwood,Temporary Home,47300156
-2022-03-21,2010-05-11 00:00:00,Carrie Underwood,Undo It,14859625
-2022-03-21,2010-09-23 00:00:00,Carrie Underwood,Mama's Song,54599610
-2022-03-21,2011-07-28 00:00:00,Brad Paisley,Remind Me,144316812
-2022-03-21,2012-03-12 00:00:00,Carrie Underwood,Good Girl,39850840
-2022-03-21,2012-08-01 00:00:00,Carrie Underwood,Blown Away,53138546
-2022-03-21,2013-01-23 00:00:00,Carrie Underwood,Two Black Cadillacs,53225825
-2022-03-21,2013-06-07 00:00:00,Carrie Underwood,See You Again,48484651
-2022-03-21,2014-06-26 00:00:00,Miranda Lambert,Somethin' Bad,138066941
-2022-03-21,2014-11-06 00:00:00,Carrie Underwood,Something in the Water,34378971
-2022-03-21,2015-01-31 00:00:00,Carrie Underwood,Little Toy Guns,22716578
-2022-03-21,2015-08-25 00:00:00,Carrie Underwood,Smoke Break,20229989
-2022-03-21,2015-12-02 00:00:00,Carrie Underwood,Heartbeat,22992528
-2022-03-21,2016-05-12 00:00:00,Carrie Underwood,Church Bells,53142533
-2022-03-21,2016-10-13 00:00:00,Carrie Underwood,Dirty Laundry,41467873
-2022-03-21,2018-05-06 00:00:00,Carrie Underwood,Cry Pretty,21455072
-2022-03-21,2018-09-11 00:00:00,Carrie Underwood,Love Wins,14999409
-2022-03-21,2019-06-07 00:00:00,Carrie Underwood,Southbound,18249416
-2022-03-21,2019-11-20 00:00:00,Carrie Underwood,Drinking Alone,15977742
-2022-03-21,2020-11-20 00:00:00,Carrie Underwood,Hallelujah,9673212
-2022-03-21,2020-12-03 00:00:00,David Bisbal,Tears Of Gold,8122174
-2022-03-21,2021-04-05 00:00:00,Carrie Underwood,How Great Thou Art,4076787
-2022-03-21,2021-04-05 00:00:00,Carrie Underwood,Nothing But The Blood Of Jesus,662504
-2022-03-21,2021-05-20 00:00:00,NEEDTOBREATHE,I Wanna Remember,1938325
-2022-03-21,2021-09-03 00:00:00,Carrie Underwood,Only Us,2146137
-2022-03-21,2021-09-08 00:00:00,Jason Aldean,If I Didn't Love You,16227243
-2022-03-21,2022-03-17 00:00:00,Carrie Underwood,Ghost Story,263172
-2022-03-22,2010-03-08 00:00:00,Carrie Underwood,"Jesus, Take The Wheel",77479046
-2022-03-22,2009-10-02 00:00:00,Carrie Underwood,Don't Forget To Remember Me,22285015
-2022-03-22,2009-10-02 00:00:00,Carrie Underwood,Before He Cheats,144754744
-2022-03-22,2009-10-02 00:00:00,Carrie Underwood,Wasted,30862536
-2022-03-22,2009-10-02 00:00:00,Carrie Underwood,So Small,32722201
-2022-03-22,2009-10-02 00:00:00,Carrie Underwood,All-American Girl,36490229
-2022-03-22,2009-10-02 00:00:00,Carrie Underwood,Last Name,27810265
-2022-03-22,2009-10-02 00:00:00,Carrie Underwood,Just A Dream,87763591
-2022-03-22,2017-12-04 00:00:00,Carrie Underwood,I Told You So,3505729
-2022-03-22,2009-11-14 00:00:00,Carrie Underwood,Cowboy Casanova,39269799
-2022-03-22,2010-01-20 00:00:00,Carrie Underwood,Temporary Home,47304305
-2022-03-22,2010-05-11 00:00:00,Carrie Underwood,Undo It,14861963
-2022-03-22,2010-09-23 00:00:00,Carrie Underwood,Mama's Song,54605183
-2022-03-22,2011-07-28 00:00:00,Brad Paisley,Remind Me,144335433
-2022-03-22,2012-03-12 00:00:00,Carrie Underwood,Good Girl,39857277
-2022-03-22,2012-08-01 00:00:00,Carrie Underwood,Blown Away,53145724
-2022-03-22,2013-01-23 00:00:00,Carrie Underwood,Two Black Cadillacs,53240074
-2022-03-22,2013-06-07 00:00:00,Carrie Underwood,See You Again,48488726
-2022-03-22,2014-06-26 00:00:00,Miranda Lambert,Somethin' Bad,138094740
-2022-03-22,2014-11-06 00:00:00,Carrie Underwood,Something in the Water,34383390
-2022-03-22,2015-01-31 00:00:00,Carrie Underwood,Little Toy Guns,22718999
-2022-03-22,2015-08-25 00:00:00,Carrie Underwood,Smoke Break,20231677
-2022-03-22,2015-12-02 00:00:00,Carrie Underwood,Heartbeat,22994783
-2022-03-22,2016-05-12 00:00:00,Carrie Underwood,Church Bells,53150224
-2022-03-22,2016-10-13 00:00:00,Carrie Underwood,Dirty Laundry,41477324
-2022-03-22,2018-05-06 00:00:00,Carrie Underwood,Cry Pretty,21457226
-2022-03-22,2018-09-11 00:00:00,Carrie Underwood,Love Wins,15001672
-2022-03-22,2019-06-07 00:00:00,Carrie Underwood,Southbound,18251302
-2022-03-22,2019-11-20 00:00:00,Carrie Underwood,Drinking Alone,15983366
-2022-03-22,2020-11-20 00:00:00,Carrie Underwood,Hallelujah,9675246
-2022-03-22,2020-12-03 00:00:00,David Bisbal,Tears Of Gold,8125762
-2022-03-22,2021-04-05 00:00:00,Carrie Underwood,How Great Thou Art,4085240
-2022-03-22,2021-04-05 00:00:00,Carrie Underwood,Nothing But The Blood Of Jesus,663324
-2022-03-22,2021-05-20 00:00:00,NEEDTOBREATHE,I Wanna Remember,1939946
-2022-03-22,2021-09-03 00:00:00,Carrie Underwood,Only Us,2150689
-2022-03-22,2021-09-08 00:00:00,Jason Aldean,If I Didn't Love You,16294241
-2022-03-22,2022-03-17 00:00:00,Carrie Underwood,Ghost Story,308688
-2022-03-23,2010-03-08 00:00:00,Carrie Underwood,"Jesus, Take The Wheel",77508305
-2022-03-23,2009-10-02 00:00:00,Carrie Underwood,Don't Forget To Remember Me,22287204
-2022-03-23,2009-10-02 00:00:00,Carrie Underwood,Before He Cheats,144804534
-2022-03-23,2009-10-02 00:00:00,Carrie Underwood,Wasted,30865868
-2022-03-23,2009-10-02 00:00:00,Carrie Underwood,So Small,32725111
-2022-03-23,2009-10-02 00:00:00,Carrie Underwood,All-American Girl,36495484
-2022-03-23,2009-10-02 00:00:00,Carrie Underwood,Last Name,27815193
-2022-03-23,2009-10-02 00:00:00,Carrie Underwood,Just A Dream,87769868
-2022-03-23,2017-12-04 00:00:00,Carrie Underwood,I Told You So,3508782
-2022-03-23,2009-11-14 00:00:00,Carrie Underwood,Cowboy Casanova,39274933
-2022-03-23,2010-01-20 00:00:00,Carrie Underwood,Temporary Home,47309552
-2022-03-23,2010-05-11 00:00:00,Carrie Underwood,Undo It,14864669
-2022-03-23,2010-09-23 00:00:00,Carrie Underwood,Mama's Song,54611997
-2022-03-23,2011-07-28 00:00:00,Brad Paisley,Remind Me,144358223
-2022-03-23,2012-03-12 00:00:00,Carrie Underwood,Good Girl,39864925
-2022-03-23,2012-08-01 00:00:00,Carrie Underwood,Blown Away,53154432
-2022-03-23,2013-01-23 00:00:00,Carrie Underwood,Two Black Cadillacs,53256411
-2022-03-23,2013-06-07 00:00:00,Carrie Underwood,See You Again,48493885
-2022-03-23,2014-06-26 00:00:00,Miranda Lambert,Somethin' Bad,138130584
-2022-03-23,2014-11-06 00:00:00,Carrie Underwood,Something in the Water,34388591
-2022-03-23,2015-01-31 00:00:00,Carrie Underwood,Little Toy Guns,22722108
-2022-03-23,2015-08-25 00:00:00,Carrie Underwood,Smoke Break,20233651
-2022-03-23,2015-12-02 00:00:00,Carrie Underwood,Heartbeat,22997621
-2022-03-23,2016-05-12 00:00:00,Carrie Underwood,Church Bells,53159740
-2022-03-23,2016-10-13 00:00:00,Carrie Underwood,Dirty Laundry,41486489
-2022-03-23,2018-05-06 00:00:00,Carrie Underwood,Cry Pretty,21459788
-2022-03-23,2018-09-11 00:00:00,Carrie Underwood,Love Wins,15004232
-2022-03-23,2019-06-07 00:00:00,Carrie Underwood,Southbound,18253722
-2022-03-23,2019-11-20 00:00:00,Carrie Underwood,Drinking Alone,15990221
-2022-03-23,2020-11-20 00:00:00,Carrie Underwood,Hallelujah,9677832
-2022-03-23,2020-12-03 00:00:00,David Bisbal,Tears Of Gold,8129804
-2022-03-23,2021-04-05 00:00:00,Carrie Underwood,How Great Thou Art,4095420
-2022-03-23,2021-04-05 00:00:00,Carrie Underwood,Nothing But The Blood Of Jesus,664313
-2022-03-23,2021-05-20 00:00:00,NEEDTOBREATHE,I Wanna Remember,1941852
-2022-03-23,2021-09-03 00:00:00,Carrie Underwood,Only Us,2156010
-2022-03-23,2021-09-08 00:00:00,Jason Aldean,If I Didn't Love You,16377923
-2022-03-23,2022-03-17 00:00:00,Carrie Underwood,Ghost Story,353528
-2022-03-24,2010-03-08 00:00:00,Carrie Underwood,"Jesus, Take The Wheel",77528520
-2022-03-24,2009-10-02 00:00:00,Carrie Underwood,Don't Forget To Remember Me,22288594
-2022-03-24,2009-10-02 00:00:00,Carrie Underwood,Before He Cheats,144835579
-2022-03-24,2009-10-02 00:00:00,Carrie Underwood,Wasted,30868160
-2022-03-24,2009-10-02 00:00:00,Carrie Underwood,So Small,32727090
-2022-03-24,2009-10-02 00:00:00,Carrie Underwood,All-American Girl,36498749
-2022-03-24,2009-10-02 00:00:00,Carrie Underwood,Last Name,27818404
-2022-03-24,2009-10-02 00:00:00,Carrie Underwood,Just A Dream,87774084
-2022-03-24,2017-12-04 00:00:00,Carrie Underwood,I Told You So,3510818
-2022-03-24,2009-11-14 00:00:00,Carrie Underwood,Cowboy Casanova,39278428
-2022-03-24,2010-01-20 00:00:00,Carrie Underwood,Temporary Home,47313160
-2022-03-24,2010-05-11 00:00:00,Carrie Underwood,Undo It,14866563
-2022-03-24,2010-09-23 00:00:00,Carrie Underwood,Mama's Song,54616577
-2022-03-24,2011-07-28 00:00:00,Brad Paisley,Remind Me,144373952
-2022-03-24,2012-03-12 00:00:00,Carrie Underwood,Good Girl,39870054
-2022-03-24,2012-08-01 00:00:00,Carrie Underwood,Blown Away,53160036
-2022-03-24,2013-01-23 00:00:00,Carrie Underwood,Two Black Cadillacs,53268023
-2022-03-24,2013-06-07 00:00:00,Carrie Underwood,See You Again,48497291
-2022-03-24,2014-06-26 00:00:00,Miranda Lambert,Somethin' Bad,138152280
-2022-03-24,2014-11-06 00:00:00,Carrie Underwood,Something in the Water,34392059
-2022-03-24,2015-01-31 00:00:00,Carrie Underwood,Little Toy Guns,22724212
-2022-03-24,2015-08-25 00:00:00,Carrie Underwood,Smoke Break,20235024
-2022-03-24,2015-12-02 00:00:00,Carrie Underwood,Heartbeat,22999582
-2022-03-24,2016-05-12 00:00:00,Carrie Underwood,Church Bells,53165984
-2022-03-24,2016-10-13 00:00:00,Carrie Underwood,Dirty Laundry,41492444
-2022-03-24,2018-05-06 00:00:00,Carrie Underwood,Cry Pretty,21461536
-2022-03-24,2018-09-11 00:00:00,Carrie Underwood,Love Wins,15005996
-2022-03-24,2019-06-07 00:00:00,Carrie Underwood,Southbound,18255253
-2022-03-24,2019-11-20 00:00:00,Carrie Underwood,Drinking Alone,15994584
-2022-03-24,2020-11-20 00:00:00,Carrie Underwood,Hallelujah,9679626
-2022-03-24,2020-12-03 00:00:00,David Bisbal,Tears Of Gold,8132873
-2022-03-24,2021-04-05 00:00:00,Carrie Underwood,How Great Thou Art,4103065
-2022-03-24,2021-04-05 00:00:00,Carrie Underwood,Nothing But The Blood Of Jesus,664962
-2022-03-24,2021-05-20 00:00:00,NEEDTOBREATHE,I Wanna Remember,1943113
-2022-03-24,2021-09-03 00:00:00,Carrie Underwood,Only Us,2159839
-2022-03-24,2021-09-08 00:00:00,Jason Aldean,If I Didn't Love You,16433467
-2022-03-24,2022-03-17 00:00:00,Carrie Underwood,Ghost Story,378993
-2022-03-25,2010-03-08 00:00:00,Carrie Underwood,"Jesus, Take The Wheel",77560065
-2022-03-25,2009-10-02 00:00:00,Carrie Underwood,Don't Forget To Remember Me,22290764
-2022-03-25,2009-10-02 00:00:00,Carrie Underwood,Before He Cheats,144892442
-2022-03-25,2009-10-02 00:00:00,Carrie Underwood,Wasted,30871771
-2022-03-25,2009-10-02 00:00:00,Carrie Underwood,So Small,32730128
-2022-03-25,2009-10-02 00:00:00,Carrie Underwood,All-American Girl,36504641
-2022-03-25,2009-10-02 00:00:00,Carrie Underwood,Last Name,27823613
-2022-03-25,2009-10-02 00:00:00,Carrie Underwood,Just A Dream,87780674
-2022-03-25,2017-12-04 00:00:00,Carrie Underwood,I Told You So,3513709
-2022-03-25,2009-11-14 00:00:00,Carrie Underwood,Cowboy Casanova,39284186
-2022-03-25,2010-01-20 00:00:00,Carrie Underwood,Temporary Home,47319133
-2022-03-25,2010-05-11 00:00:00,Carrie Underwood,Undo It,14869589
-2022-03-25,2010-09-23 00:00:00,Carrie Underwood,Mama's Song,54624556
-2022-03-25,2011-07-28 00:00:00,Brad Paisley,Remind Me,144398696
-2022-03-25,2012-03-12 00:00:00,Carrie Underwood,Good Girl,39878417
-2022-03-25,2012-08-01 00:00:00,Carrie Underwood,Blown Away,53169590
-2022-03-25,2013-01-23 00:00:00,Carrie Underwood,Two Black Cadillacs,53285748
-2022-03-25,2013-06-07 00:00:00,Carrie Underwood,See You Again,48502984
-2022-03-25,2014-06-26 00:00:00,Miranda Lambert,Somethin' Bad,138189993
-2022-03-25,2014-11-06 00:00:00,Carrie Underwood,Something in the Water,34398074
-2022-03-25,2015-01-31 00:00:00,Carrie Underwood,Little Toy Guns,22727759
-2022-03-25,2015-08-25 00:00:00,Carrie Underwood,Smoke Break,20237096
-2022-03-25,2015-12-02 00:00:00,Carrie Underwood,Heartbeat,23002396
-2022-03-25,2016-05-12 00:00:00,Carrie Underwood,Church Bells,53177015
-2022-03-25,2016-10-13 00:00:00,Carrie Underwood,Dirty Laundry,41503003
-2022-03-25,2018-05-06 00:00:00,Carrie Underwood,Cry Pretty,21464250
-2022-03-25,2018-09-11 00:00:00,Carrie Underwood,Love Wins,15009141
-2022-03-25,2019-06-07 00:00:00,Carrie Underwood,Southbound,18257998
-2022-03-25,2019-11-20 00:00:00,Carrie Underwood,Drinking Alone,16002960
-2022-03-25,2020-11-20 00:00:00,Carrie Underwood,Hallelujah,9682539
-2022-03-25,2020-12-03 00:00:00,David Bisbal,Tears Of Gold,8137576
-2022-03-25,2021-04-05 00:00:00,Carrie Underwood,How Great Thou Art,4114712
-2022-03-25,2021-04-05 00:00:00,Carrie Underwood,Nothing But The Blood Of Jesus,666053
-2022-03-25,2021-05-20 00:00:00,NEEDTOBREATHE,I Wanna Remember,1945066
-2022-03-25,2021-09-03 00:00:00,Carrie Underwood,Only Us,2165537
-2022-03-25,2021-09-08 00:00:00,Jason Aldean,If I Didn't Love You,16531046
-2022-03-25,2022-03-17 00:00:00,Carrie Underwood,Ghost Story,417577
-2022-03-26,2010-03-08 00:00:00,Carrie Underwood,"Jesus, Take The Wheel",77583432
-2022-03-26,2009-10-02 00:00:00,Carrie Underwood,Don't Forget To Remember Me,22292342
-2022-03-26,2009-10-02 00:00:00,Carrie Underwood,Before He Cheats,144937378
-2022-03-26,2009-10-02 00:00:00,Carrie Underwood,Wasted,30874272
-2022-03-26,2009-10-02 00:00:00,Carrie Underwood,So Small,32732097
-2022-03-26,2009-10-02 00:00:00,Carrie Underwood,All-American Girl,36508611
-2022-03-26,2009-10-02 00:00:00,Carrie Underwood,Last Name,27827007
-2022-03-26,2009-10-02 00:00:00,Carrie Underwood,Just A Dream,87785050
-2022-03-26,2017-12-04 00:00:00,Carrie Underwood,I Told You So,3516033
-2022-03-26,2009-11-14 00:00:00,Carrie Underwood,Cowboy Casanova,39288213
-2022-03-26,2010-01-20 00:00:00,Carrie Underwood,Temporary Home,47323633
-2022-03-26,2010-05-11 00:00:00,Carrie Underwood,Undo It,14871755
-2022-03-26,2010-09-23 00:00:00,Carrie Underwood,Mama's Song,54630451
-2022-03-26,2011-07-28 00:00:00,Brad Paisley,Remind Me,144416584
-2022-03-26,2012-03-12 00:00:00,Carrie Underwood,Good Girl,39884366
-2022-03-26,2012-08-01 00:00:00,Carrie Underwood,Blown Away,53176338
-2022-03-26,2013-01-23 00:00:00,Carrie Underwood,Two Black Cadillacs,53298918
-2022-03-26,2013-06-07 00:00:00,Carrie Underwood,See You Again,48506858
-2022-03-26,2014-06-26 00:00:00,Miranda Lambert,Somethin' Bad,138219162
-2022-03-26,2014-11-06 00:00:00,Carrie Underwood,Something in the Water,34401931
-2022-03-26,2015-01-31 00:00:00,Carrie Underwood,Little Toy Guns,22730155
-2022-03-26,2015-08-25 00:00:00,Carrie Underwood,Smoke Break,20238475
-2022-03-26,2015-12-02 00:00:00,Carrie Underwood,Heartbeat,23004367
-2022-03-26,2016-05-12 00:00:00,Carrie Underwood,Church Bells,53185069
-2022-03-26,2016-10-13 00:00:00,Carrie Underwood,Dirty Laundry,41510531
-2022-03-26,2018-05-06 00:00:00,Carrie Underwood,Cry Pretty,21466069
-2022-03-26,2018-09-11 00:00:00,Carrie Underwood,Love Wins,15011315
-2022-03-26,2019-06-07 00:00:00,Carrie Underwood,Southbound,18260033
-2022-03-26,2019-11-20 00:00:00,Carrie Underwood,Drinking Alone,16009027
-2022-03-26,2020-11-20 00:00:00,Carrie Underwood,Hallelujah,9684763
-2022-03-26,2020-12-03 00:00:00,David Bisbal,Tears Of Gold,8141999
-2022-03-26,2021-04-05 00:00:00,Carrie Underwood,How Great Thou Art,4123691
-2022-03-26,2021-04-05 00:00:00,Carrie Underwood,Nothing But The Blood Of Jesus,666868
-2022-03-26,2021-05-20 00:00:00,NEEDTOBREATHE,I Wanna Remember,1946469
-2022-03-26,2021-09-03 00:00:00,Carrie Underwood,Only Us,2169401
-2022-03-26,2021-09-08 00:00:00,Jason Aldean,If I Didn't Love You,16604458
-2022-03-26,2022-03-17 00:00:00,Carrie Underwood,Ghost Story,442819
+2022-03-21,2010-03-08,Carrie Underwood,"Jesus, Take The Wheel",77455153
+2022-03-21,2009-10-02,Carrie Underwood,Don't Forget To Remember Me,22283127
+2022-03-21,2009-10-02,Carrie Underwood,Before He Cheats,144715421
+2022-03-21,2009-10-02,Carrie Underwood,Wasted,30859543
+2022-03-21,2009-10-02,Carrie Underwood,So Small,32719703
+2022-03-21,2009-10-02,Carrie Underwood,All-American Girl,36486067
+2022-03-21,2009-10-02,Carrie Underwood,Last Name,27806196
+2022-03-21,2009-10-02,Carrie Underwood,Just A Dream,87758278
+2022-03-21,2017-12-04,Carrie Underwood,I Told You So,3503147
+2022-03-21,2009-11-14,Carrie Underwood,Cowboy Casanova,39265586
+2022-03-21,2010-01-20,Carrie Underwood,Temporary Home,47300156
+2022-03-21,2010-05-11,Carrie Underwood,Undo It,14859625
+2022-03-21,2010-09-23,Carrie Underwood,Mama's Song,54599610
+2022-03-21,2011-07-28,Brad Paisley,Remind Me,144316812
+2022-03-21,2012-03-12,Carrie Underwood,Good Girl,39850840
+2022-03-21,2012-08-01,Carrie Underwood,Blown Away,53138546
+2022-03-21,2013-01-23,Carrie Underwood,Two Black Cadillacs,53225825
+2022-03-21,2013-06-07,Carrie Underwood,See You Again,48484651
+2022-03-21,2014-06-26,Miranda Lambert,Somethin' Bad,138066941
+2022-03-21,2014-11-06,Carrie Underwood,Something in the Water,34378971
+2022-03-21,2015-01-31,Carrie Underwood,Little Toy Guns,22716578
+2022-03-21,2015-08-25,Carrie Underwood,Smoke Break,20229989
+2022-03-21,2015-12-02,Carrie Underwood,Heartbeat,22992528
+2022-03-21,2016-05-12,Carrie Underwood,Church Bells,53142533
+2022-03-21,2016-10-13,Carrie Underwood,Dirty Laundry,41467873
+2022-03-21,2018-05-06,Carrie Underwood,Cry Pretty,21455072
+2022-03-21,2018-09-11,Carrie Underwood,Love Wins,14999409
+2022-03-21,2019-06-07,Carrie Underwood,Southbound,18249416
+2022-03-21,2019-11-20,Carrie Underwood,Drinking Alone,15977742
+2022-03-21,2020-11-20,Carrie Underwood,Hallelujah,9673212
+2022-03-21,2020-12-03,David Bisbal,Tears Of Gold,8122174
+2022-03-21,2021-04-05,Carrie Underwood,How Great Thou Art,4076787
+2022-03-21,2021-04-05,Carrie Underwood,Nothing But The Blood Of Jesus,662504
+2022-03-21,2021-05-20,NEEDTOBREATHE,I Wanna Remember,1938325
+2022-03-21,2021-09-03,Carrie Underwood,Only Us,2146137
+2022-03-21,2021-09-08,Jason Aldean,If I Didn't Love You,16227243
+2022-03-21,2022-03-17,Carrie Underwood,Ghost Story,263172
+2022-03-22,2010-03-08,Carrie Underwood,"Jesus, Take The Wheel",77479046
+2022-03-22,2009-10-02,Carrie Underwood,Don't Forget To Remember Me,22285015
+2022-03-22,2009-10-02,Carrie Underwood,Before He Cheats,144754744
+2022-03-22,2009-10-02,Carrie Underwood,Wasted,30862536
+2022-03-22,2009-10-02,Carrie Underwood,So Small,32722201
+2022-03-22,2009-10-02,Carrie Underwood,All-American Girl,36490229
+2022-03-22,2009-10-02,Carrie Underwood,Last Name,27810265
+2022-03-22,2009-10-02,Carrie Underwood,Just A Dream,87763591
+2022-03-22,2017-12-04,Carrie Underwood,I Told You So,3505729
+2022-03-22,2009-11-14,Carrie Underwood,Cowboy Casanova,39269799
+2022-03-22,2010-01-20,Carrie Underwood,Temporary Home,47304305
+2022-03-22,2010-05-11,Carrie Underwood,Undo It,14861963
+2022-03-22,2010-09-23,Carrie Underwood,Mama's Song,54605183
+2022-03-22,2011-07-28,Brad Paisley,Remind Me,144335433
+2022-03-22,2012-03-12,Carrie Underwood,Good Girl,39857277
+2022-03-22,2012-08-01,Carrie Underwood,Blown Away,53145724
+2022-03-22,2013-01-23,Carrie Underwood,Two Black Cadillacs,53240074
+2022-03-22,2013-06-07,Carrie Underwood,See You Again,48488726
+2022-03-22,2014-06-26,Miranda Lambert,Somethin' Bad,138094740
+2022-03-22,2014-11-06,Carrie Underwood,Something in the Water,34383390
+2022-03-22,2015-01-31,Carrie Underwood,Little Toy Guns,22718999
+2022-03-22,2015-08-25,Carrie Underwood,Smoke Break,20231677
+2022-03-22,2015-12-02,Carrie Underwood,Heartbeat,22994783
+2022-03-22,2016-05-12,Carrie Underwood,Church Bells,53150224
+2022-03-22,2016-10-13,Carrie Underwood,Dirty Laundry,41477324
+2022-03-22,2018-05-06,Carrie Underwood,Cry Pretty,21457226
+2022-03-22,2018-09-11,Carrie Underwood,Love Wins,15001672
+2022-03-22,2019-06-07,Carrie Underwood,Southbound,18251302
+2022-03-22,2019-11-20,Carrie Underwood,Drinking Alone,15983366
+2022-03-22,2020-11-20,Carrie Underwood,Hallelujah,9675246
+2022-03-22,2020-12-03,David Bisbal,Tears Of Gold,8125762
+2022-03-22,2021-04-05,Carrie Underwood,How Great Thou Art,4085240
+2022-03-22,2021-04-05,Carrie Underwood,Nothing But The Blood Of Jesus,663324
+2022-03-22,2021-05-20,NEEDTOBREATHE,I Wanna Remember,1939946
+2022-03-22,2021-09-03,Carrie Underwood,Only Us,2150689
+2022-03-22,2021-09-08,Jason Aldean,If I Didn't Love You,16294241
+2022-03-22,2022-03-17,Carrie Underwood,Ghost Story,308688
+2022-03-23,2010-03-08,Carrie Underwood,"Jesus, Take The Wheel",77508305
+2022-03-23,2009-10-02,Carrie Underwood,Don't Forget To Remember Me,22287204
+2022-03-23,2009-10-02,Carrie Underwood,Before He Cheats,144804534
+2022-03-23,2009-10-02,Carrie Underwood,Wasted,30865868
+2022-03-23,2009-10-02,Carrie Underwood,So Small,32725111
+2022-03-23,2009-10-02,Carrie Underwood,All-American Girl,36495484
+2022-03-23,2009-10-02,Carrie Underwood,Last Name,27815193
+2022-03-23,2009-10-02,Carrie Underwood,Just A Dream,87769868
+2022-03-23,2017-12-04,Carrie Underwood,I Told You So,3508782
+2022-03-23,2009-11-14,Carrie Underwood,Cowboy Casanova,39274933
+2022-03-23,2010-01-20,Carrie Underwood,Temporary Home,47309552
+2022-03-23,2010-05-11,Carrie Underwood,Undo It,14864669
+2022-03-23,2010-09-23,Carrie Underwood,Mama's Song,54611997
+2022-03-23,2011-07-28,Brad Paisley,Remind Me,144358223
+2022-03-23,2012-03-12,Carrie Underwood,Good Girl,39864925
+2022-03-23,2012-08-01,Carrie Underwood,Blown Away,53154432
+2022-03-23,2013-01-23,Carrie Underwood,Two Black Cadillacs,53256411
+2022-03-23,2013-06-07,Carrie Underwood,See You Again,48493885
+2022-03-23,2014-06-26,Miranda Lambert,Somethin' Bad,138130584
+2022-03-23,2014-11-06,Carrie Underwood,Something in the Water,34388591
+2022-03-23,2015-01-31,Carrie Underwood,Little Toy Guns,22722108
+2022-03-23,2015-08-25,Carrie Underwood,Smoke Break,20233651
+2022-03-23,2015-12-02,Carrie Underwood,Heartbeat,22997621
+2022-03-23,2016-05-12,Carrie Underwood,Church Bells,53159740
+2022-03-23,2016-10-13,Carrie Underwood,Dirty Laundry,41486489
+2022-03-23,2018-05-06,Carrie Underwood,Cry Pretty,21459788
+2022-03-23,2018-09-11,Carrie Underwood,Love Wins,15004232
+2022-03-23,2019-06-07,Carrie Underwood,Southbound,18253722
+2022-03-23,2019-11-20,Carrie Underwood,Drinking Alone,15990221
+2022-03-23,2020-11-20,Carrie Underwood,Hallelujah,9677832
+2022-03-23,2020-12-03,David Bisbal,Tears Of Gold,8129804
+2022-03-23,2021-04-05,Carrie Underwood,How Great Thou Art,4095420
+2022-03-23,2021-04-05,Carrie Underwood,Nothing But The Blood Of Jesus,664313
+2022-03-23,2021-05-20,NEEDTOBREATHE,I Wanna Remember,1941852
+2022-03-23,2021-09-03,Carrie Underwood,Only Us,2156010
+2022-03-23,2021-09-08,Jason Aldean,If I Didn't Love You,16377923
+2022-03-23,2022-03-17,Carrie Underwood,Ghost Story,353528
+2022-03-24,2010-03-08,Carrie Underwood,"Jesus, Take The Wheel",77528520
+2022-03-24,2009-10-02,Carrie Underwood,Don't Forget To Remember Me,22288594
+2022-03-24,2009-10-02,Carrie Underwood,Before He Cheats,144835579
+2022-03-24,2009-10-02,Carrie Underwood,Wasted,30868160
+2022-03-24,2009-10-02,Carrie Underwood,So Small,32727090
+2022-03-24,2009-10-02,Carrie Underwood,All-American Girl,36498749
+2022-03-24,2009-10-02,Carrie Underwood,Last Name,27818404
+2022-03-24,2009-10-02,Carrie Underwood,Just A Dream,87774084
+2022-03-24,2017-12-04,Carrie Underwood,I Told You So,3510818
+2022-03-24,2009-11-14,Carrie Underwood,Cowboy Casanova,39278428
+2022-03-24,2010-01-20,Carrie Underwood,Temporary Home,47313160
+2022-03-24,2010-05-11,Carrie Underwood,Undo It,14866563
+2022-03-24,2010-09-23,Carrie Underwood,Mama's Song,54616577
+2022-03-24,2011-07-28,Brad Paisley,Remind Me,144373952
+2022-03-24,2012-03-12,Carrie Underwood,Good Girl,39870054
+2022-03-24,2012-08-01,Carrie Underwood,Blown Away,53160036
+2022-03-24,2013-01-23,Carrie Underwood,Two Black Cadillacs,53268023
+2022-03-24,2013-06-07,Carrie Underwood,See You Again,48497291
+2022-03-24,2014-06-26,Miranda Lambert,Somethin' Bad,138152280
+2022-03-24,2014-11-06,Carrie Underwood,Something in the Water,34392059
+2022-03-24,2015-01-31,Carrie Underwood,Little Toy Guns,22724212
+2022-03-24,2015-08-25,Carrie Underwood,Smoke Break,20235024
+2022-03-24,2015-12-02,Carrie Underwood,Heartbeat,22999582
+2022-03-24,2016-05-12,Carrie Underwood,Church Bells,53165984
+2022-03-24,2016-10-13,Carrie Underwood,Dirty Laundry,41492444
+2022-03-24,2018-05-06,Carrie Underwood,Cry Pretty,21461536
+2022-03-24,2018-09-11,Carrie Underwood,Love Wins,15005996
+2022-03-24,2019-06-07,Carrie Underwood,Southbound,18255253
+2022-03-24,2019-11-20,Carrie Underwood,Drinking Alone,15994584
+2022-03-24,2020-11-20,Carrie Underwood,Hallelujah,9679626
+2022-03-24,2020-12-03,David Bisbal,Tears Of Gold,8132873
+2022-03-24,2021-04-05,Carrie Underwood,How Great Thou Art,4103065
+2022-03-24,2021-04-05,Carrie Underwood,Nothing But The Blood Of Jesus,664962
+2022-03-24,2021-05-20,NEEDTOBREATHE,I Wanna Remember,1943113
+2022-03-24,2021-09-03,Carrie Underwood,Only Us,2159839
+2022-03-24,2021-09-08,Jason Aldean,If I Didn't Love You,16433467
+2022-03-24,2022-03-17,Carrie Underwood,Ghost Story,378993
+2022-03-25,2010-03-08,Carrie Underwood,"Jesus, Take The Wheel",77560065
+2022-03-25,2009-10-02,Carrie Underwood,Don't Forget To Remember Me,22290764
+2022-03-25,2009-10-02,Carrie Underwood,Before He Cheats,144892442
+2022-03-25,2009-10-02,Carrie Underwood,Wasted,30871771
+2022-03-25,2009-10-02,Carrie Underwood,So Small,32730128
+2022-03-25,2009-10-02,Carrie Underwood,All-American Girl,36504641
+2022-03-25,2009-10-02,Carrie Underwood,Last Name,27823613
+2022-03-25,2009-10-02,Carrie Underwood,Just A Dream,87780674
+2022-03-25,2017-12-04,Carrie Underwood,I Told You So,3513709
+2022-03-25,2009-11-14,Carrie Underwood,Cowboy Casanova,39284186
+2022-03-25,2010-01-20,Carrie Underwood,Temporary Home,47319133
+2022-03-25,2010-05-11,Carrie Underwood,Undo It,14869589
+2022-03-25,2010-09-23,Carrie Underwood,Mama's Song,54624556
+2022-03-25,2011-07-28,Brad Paisley,Remind Me,144398696
+2022-03-25,2012-03-12,Carrie Underwood,Good Girl,39878417
+2022-03-25,2012-08-01,Carrie Underwood,Blown Away,53169590
+2022-03-25,2013-01-23,Carrie Underwood,Two Black Cadillacs,53285748
+2022-03-25,2013-06-07,Carrie Underwood,See You Again,48502984
+2022-03-25,2014-06-26,Miranda Lambert,Somethin' Bad,138189993
+2022-03-25,2014-11-06,Carrie Underwood,Something in the Water,34398074
+2022-03-25,2015-01-31,Carrie Underwood,Little Toy Guns,22727759
+2022-03-25,2015-08-25,Carrie Underwood,Smoke Break,20237096
+2022-03-25,2015-12-02,Carrie Underwood,Heartbeat,23002396
+2022-03-25,2016-05-12,Carrie Underwood,Church Bells,53177015
+2022-03-25,2016-10-13,Carrie Underwood,Dirty Laundry,41503003
+2022-03-25,2018-05-06,Carrie Underwood,Cry Pretty,21464250
+2022-03-25,2018-09-11,Carrie Underwood,Love Wins,15009141
+2022-03-25,2019-06-07,Carrie Underwood,Southbound,18257998
+2022-03-25,2019-11-20,Carrie Underwood,Drinking Alone,16002960
+2022-03-25,2020-11-20,Carrie Underwood,Hallelujah,9682539
+2022-03-25,2020-12-03,David Bisbal,Tears Of Gold,8137576
+2022-03-25,2021-04-05,Carrie Underwood,How Great Thou Art,4114712
+2022-03-25,2021-04-05,Carrie Underwood,Nothing But The Blood Of Jesus,666053
+2022-03-25,2021-05-20,NEEDTOBREATHE,I Wanna Remember,1945066
+2022-03-25,2021-09-03,Carrie Underwood,Only Us,2165537
+2022-03-25,2021-09-08,Jason Aldean,If I Didn't Love You,16531046
+2022-03-25,2022-03-17,Carrie Underwood,Ghost Story,417577
+2022-03-26,2010-03-08,Carrie Underwood,"Jesus, Take The Wheel",77583432
+2022-03-26,2009-10-02,Carrie Underwood,Don't Forget To Remember Me,22292342
+2022-03-26,2009-10-02,Carrie Underwood,Before He Cheats,144937378
+2022-03-26,2009-10-02,Carrie Underwood,Wasted,30874272
+2022-03-26,2009-10-02,Carrie Underwood,So Small,32732097
+2022-03-26,2009-10-02,Carrie Underwood,All-American Girl,36508611
+2022-03-26,2009-10-02,Carrie Underwood,Last Name,27827007
+2022-03-26,2009-10-02,Carrie Underwood,Just A Dream,87785050
+2022-03-26,2017-12-04,Carrie Underwood,I Told You So,3516033
+2022-03-26,2009-11-14,Carrie Underwood,Cowboy Casanova,39288213
+2022-03-26,2010-01-20,Carrie Underwood,Temporary Home,47323633
+2022-03-26,2010-05-11,Carrie Underwood,Undo It,14871755
+2022-03-26,2010-09-23,Carrie Underwood,Mama's Song,54630451
+2022-03-26,2011-07-28,Brad Paisley,Remind Me,144416584
+2022-03-26,2012-03-12,Carrie Underwood,Good Girl,39884366
+2022-03-26,2012-08-01,Carrie Underwood,Blown Away,53176338
+2022-03-26,2013-01-23,Carrie Underwood,Two Black Cadillacs,53298918
+2022-03-26,2013-06-07,Carrie Underwood,See You Again,48506858
+2022-03-26,2014-06-26,Miranda Lambert,Somethin' Bad,138219162
+2022-03-26,2014-11-06,Carrie Underwood,Something in the Water,34401931
+2022-03-26,2015-01-31,Carrie Underwood,Little Toy Guns,22730155
+2022-03-26,2015-08-25,Carrie Underwood,Smoke Break,20238475
+2022-03-26,2015-12-02,Carrie Underwood,Heartbeat,23004367
+2022-03-26,2016-05-12,Carrie Underwood,Church Bells,53185069
+2022-03-26,2016-10-13,Carrie Underwood,Dirty Laundry,41510531
+2022-03-26,2018-05-06,Carrie Underwood,Cry Pretty,21466069
+2022-03-26,2018-09-11,Carrie Underwood,Love Wins,15011315
+2022-03-26,2019-06-07,Carrie Underwood,Southbound,18260033
+2022-03-26,2019-11-20,Carrie Underwood,Drinking Alone,16009027
+2022-03-26,2020-11-20,Carrie Underwood,Hallelujah,9684763
+2022-03-26,2020-12-03,David Bisbal,Tears Of Gold,8141999
+2022-03-26,2021-04-05,Carrie Underwood,How Great Thou Art,4123691
+2022-03-26,2021-04-05,Carrie Underwood,Nothing But The Blood Of Jesus,666868
+2022-03-26,2021-05-20,NEEDTOBREATHE,I Wanna Remember,1946469
+2022-03-26,2021-09-03,Carrie Underwood,Only Us,2169401
+2022-03-26,2021-09-08,Jason Aldean,If I Didn't Love You,16604458
+2022-03-26,2022-03-17,Carrie Underwood,Ghost Story,442819
+2022-03-27,2010-03-08,Carrie Underwood,"Jesus, Take The Wheel",77599582
+2022-03-27,2009-10-02,Carrie Underwood,Don't Forget To Remember Me,22293154
+2022-03-27,2009-10-02,Carrie Underwood,Before He Cheats,144959825
+2022-03-27,2009-10-02,Carrie Underwood,Wasted,30875557
+2022-03-27,2009-10-02,Carrie Underwood,So Small,32733135
+2022-03-27,2009-10-02,Carrie Underwood,All-American Girl,36510571
+2022-03-27,2009-10-02,Carrie Underwood,Last Name,27828702
+2022-03-27,2009-10-02,Carrie Underwood,Just A Dream,87787404
+2022-03-27,2017-12-04,Carrie Underwood,I Told You So,3517296
+2022-03-27,2009-11-14,Carrie Underwood,Cowboy Casanova,39290091
+2022-03-27,2010-01-20,Carrie Underwood,Temporary Home,47326071
+2022-03-27,2010-05-11,Carrie Underwood,Undo It,14872782
+2022-03-27,2010-09-23,Carrie Underwood,Mama's Song,54634208
+2022-03-27,2011-07-28,Brad Paisley,Remind Me,144426748
+2022-03-27,2012-03-12,Carrie Underwood,Good Girl,39887251
+2022-03-27,2012-08-01,Carrie Underwood,Blown Away,53179844
+2022-03-27,2013-01-23,Carrie Underwood,Two Black Cadillacs,53305251
+2022-03-27,2013-06-07,Carrie Underwood,See You Again,48508984
+2022-03-27,2014-06-26,Miranda Lambert,Somethin' Bad,138233048
+2022-03-27,2014-11-06,Carrie Underwood,Something in the Water,34403886
+2022-03-27,2015-01-31,Carrie Underwood,Little Toy Guns,22731370
+2022-03-27,2015-08-25,Carrie Underwood,Smoke Break,20239160
+2022-03-27,2015-12-02,Carrie Underwood,Heartbeat,23005393
+2022-03-27,2016-05-12,Carrie Underwood,Church Bells,53188833
+2022-03-27,2016-10-13,Carrie Underwood,Dirty Laundry,41513940
+2022-03-27,2018-05-06,Carrie Underwood,Cry Pretty,21466954
+2022-03-27,2018-09-11,Carrie Underwood,Love Wins,15012404
+2022-03-27,2019-06-07,Carrie Underwood,Southbound,18260948
+2022-03-27,2019-11-20,Carrie Underwood,Drinking Alone,16011903
+2022-03-27,2020-11-20,Carrie Underwood,Hallelujah,9686136
+2022-03-27,2020-12-03,David Bisbal,Tears Of Gold,8144590
+2022-03-27,2021-04-05,Carrie Underwood,How Great Thou Art,4129387
+2022-03-27,2021-04-05,Carrie Underwood,Nothing But The Blood Of Jesus,667465
+2022-03-27,2021-05-20,NEEDTOBREATHE,I Wanna Remember,1947127
+2022-03-27,2021-09-03,Carrie Underwood,Only Us,2171659
+2022-03-27,2021-09-08,Jason Aldean,If I Didn't Love You,16638256
+2022-03-27,2022-03-17,Carrie Underwood,Ghost Story,455215

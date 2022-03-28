@@ -161,7 +161,7 @@ scraped_data['Video'] = scraped_data['Video']\
 
 
 " Import Previously Scraped Data "
-existing_data = pd.read_csv("Projects/Scrape-Youtube-Views/Output/YouTube Views.csv", parse_dates=[0])
+existing_data = pd.read_csv("Projects/Scrape-YouTube-Views/Output/YouTube Views.csv", parse_dates=[0])
 
 
 " Append New Data to Existing Data "
@@ -171,7 +171,8 @@ df_export = pd.concat([existing_data, scraped_data]).reset_index(drop=True)
 
 
 " Export to CSV "
-df_export.to_csv("Projects/Scrape-Youtube-Views/Output/YouTube Views.csv", index=False)
+df_export.to_csv("Projects/Scrape-YouTube-Views/Output/YouTube Views.csv", index=False)
+
 # Print as table
 print(tabulate(df_export, headers='keys', tablefmt='plain', showindex=False))
 
@@ -182,37 +183,132 @@ print(tabulate(df_export, headers='keys', tablefmt='plain', showindex=False))
 
 
 " Analysis - Views Since Day of Release "
-# Show number of views based on days from upload date to show the fastest risers
+# Show number of views based on days from upload date to show the biggest releases
 
-day_of_release = df_export
+day_of_release = pd.read_csv("Projects/Scrape-YouTube-Views/Output/YouTube Views.csv", parse_dates=[0, 1])
 
-# Calculate days since upload date
 day_of_release['Days Since Release'] = pd.to_datetime(day_of_release['Date']) - pd.to_datetime(day_of_release['Upload Date'])
-
-# Convert timedelta to integer
 day_of_release['Days Since Release'] = day_of_release['Days Since Release'].dt.days.astype('int16')
-day_of_release.dtypes
-
-# Sort
 day_of_release = day_of_release.sort_values(by=['Video', 'Date']).reset_index(drop=True)
-day_of_release.to_csv("Projects/Scrape-Youtube-Views/test.csv", index=False)
 
-# Filter
-day_of_release_filter = day_of_release.loc[(day_of_release['Upload Date'] >= min(day_of_release['Date']))]
 
-# TODO: Create small multiples graph showing views since release date with all video lines greyed out in each subplot .
+" Plot - Views Since Day of Release "
+# TODO: fix color scheme
+plt.style.use('seaborn')  # Set style
+fig, ax = plt.subplots(figsize=(14, 8))
 
-# https://mytableaujourney.com/2020/05/12/spaghetti-lines-for-the-win-and-how-to-control-the-size-of-your-marks-in-tableau/
-# https://www.data-to-viz.com/caveat/spaghetti.html
-# https://python-graph-gallery.com/123-highlight-a-line-in-line-plot
-# https://python-graph-gallery.com/125-small-multiples-for-line-chart
+grouped = day_of_release.groupby('Video')
+
+for video, grp in day_of_release.groupby(['Video']):
+    ax = grp.plot(ax=ax,
+                  kind='line',
+                  x='Days Since Release',
+                  y='Views',
+                  label=video,
+                  legend=False)
+
+    selection = grouped.get_group(video)
+    max_views = selection['Views'].max()
+    max_days = selection['Days Since Release'].max()  # Max number of days since release for each video
+    views = float(selection[day_of_release['Days Since Release'] == max_days]['Views'])  # Max views for each video
+    ax.scatter(x=[max_days], y=[views], s=70, clip_on=False, linewidth=0)  # Creates single dot at end of each line plot
+    ax.annotate(
+        video + ', ' + str(int(views/1000000)) + 'MM',
+        xy=[max_days, views],
+        xytext=[7, -2],
+        textcoords='offset points')
+
+# Format x axis
+ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))  # Format y axis thousands
+plt.xticks(np.arange(0, day_of_release['Days Since Release'].max().round(-3)+501, 500))
+ax.set_xlim([0, day_of_release['Days Since Release'].max().round(-3)+501])
+
+# Format y axis
+ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))  # Format y axis thousands
+plt.yticks(np.arange(0, 150000000 + 1, 25000000))
+ax.set_ylim([0, 150000000 + 1])
+ax.axes.yaxis.set_ticklabels([])
+
+# Titles
+plt.title('Music Video Views Since Premiere',
+          fontweight='bold',
+          fontsize=20)
+plt.xlabel('Days Since Release',
+           # fontweight='bold',
+           size=12)
+plt.ylabel('Views',
+           # fontweight='bold',
+           size=12)
+
+plt.tight_layout()
+plt.show()
+
+plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Views Since Premiere.png')
+
+
+" Plot - Views Since Day of Release - Subset "
+
+# Subset to videos that have been tracked since day 1
+day_of_release_subset = day_of_release.loc[(day_of_release['Upload Date'] >= min(day_of_release['Date']))]
+
+
+plt.style.use('seaborn')  # Set style
+fig, ax = plt.subplots(figsize=(14, 8))
+
+grouped = day_of_release_subset.groupby('Video')
+
+for video, grp in day_of_release_subset.groupby(['Video']):
+    ax = grp.plot(ax=ax,
+                  kind='line',
+                  x='Days Since Release',
+                  y='Views',
+                  label=video,
+                  legend=False)
+
+    selection = grouped.get_group(video)
+    max_views = selection['Views'].max()
+    max_days = selection['Days Since Release'].max()  # Max number of days since release for each video
+    views = float(selection[day_of_release_subset['Days Since Release'] == max_days]['Views'])  # Max views for each video
+    ax.scatter(x=[max_days], y=[views], s=70, clip_on=False, linewidth=0)  # Creates single dot at end of each line plot
+    ax.annotate(
+        video + ', ' + str(int(views/1000000)) + 'MM',
+        xy=[max_days, views],
+        xytext=[7, -2],
+        textcoords='offset points')
+
+# Format x axis
+ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))  # Format y axis thousands
+plt.xticks(np.arange(0, day_of_release_subset['Days Since Release'].max() + 31, 30))
+ax.set_xlim([0, day_of_release_subset['Days Since Release'].max() + 31])
+
+# Format y axis
+ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))  # Format y axis thousands
+plt.yticks(np.arange(0, 20000000 + 1, 2500000))
+ax.set_ylim([0, 20000000 + 1])
+# ax.axes.yaxis.set_ticklabels([])
+
+# Titles
+plt.title('Music Video Views Since Premiere',
+          fontweight='bold',
+          fontsize=20)
+plt.xlabel('Days Since Release',
+           # fontweight='bold',
+           size=12)
+plt.ylabel('Views',
+           # fontweight='bold',
+           size=12)
+
+plt.tight_layout()
+plt.show()
+
+plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Views Since Premiere - Subset.png')
 
 
 
 " Analysis - Views per Month "
 # Shows which videos consistently garner the most views and any deviations from average
 
-df_analysis = df_export
+df_analysis = pd.read_csv("Projects/Scrape-YouTube-Views/Output/YouTube Views.csv", parse_dates=[0, 1])
 
 # Extract year and month and create new datetime
 df_analysis["Year"] = df_analysis["Date"].dt.year
@@ -223,13 +319,13 @@ df_analysis["Date"] = pd.to_datetime(df_analysis['Month_Year_Str'], format='%Y-%
 df_analysis.drop(columns=['Month_Year_Str'], inplace=True)
 
 # Sort by Video and Date
-df_analysis_sorted = df_analysis.sort_values(by=['Video', 'Date'])
+df_analysis = df_analysis.sort_values(by=['Video', 'Date'])
 
-# Calculate daily gains in views by video
-df_analysis_sorted['Monthly_Views'] = df_analysis_sorted.groupby('Video')['Views'].diff()
+# Calculate 'daily' gains in views by video
+df_analysis['Monthly_Views'] = df_analysis.groupby('Video')['Views'].diff()
 
 # Calculate new views for each video by month
-df_monthly_views = df_analysis_sorted.groupby(['Date', 'Video'])["Monthly_Views"].sum().reset_index()
+df_monthly_views = df_analysis.groupby(['Date', 'Video'])["Monthly_Views"].sum().reset_index()
 df_monthly_views["Monthly_Views"] = df_monthly_views["Monthly_Views"].astype(int)  # Convert float to integer
 
 # Sort by video with highest view gains
@@ -240,15 +336,15 @@ df_monthly_views = df_monthly_views.sort_values(['Date', 'Monthly_Views'], ascen
 # df_monthly_views["Monthly_Views"] = (df_monthly_views.Views_Delta.apply(lambda x: "{:,}".format(x)))
 # df_monthly_views["Monthly_Views"] = pd.to_datetime(df_monthly_views["Monthly_Views"], format='%Y-%m-%d').dt.date
 
-# Print as table
 df_monthly_views_final = df_monthly_views[['Date', 'Video', 'Monthly_Views']]
+
 print(tabulate(df_monthly_views_final, headers='keys', tablefmt='plain', showindex=False))
 
 
-" Scatter Plot "
+" Plot - Views per Month "
 # Single plot with monthly view counts for each video via Matplotlib
 
-# TODO: change to line plot
+# TODO: change to line plot for single video at a time, or in small multiples
 
 plt.style.use('seaborn-notebook')  # Set style
 fig, ax = plt.subplots(figsize=(13, 8))  # Set figure
@@ -270,7 +366,7 @@ plt.scatter(x=df_monthly_views_final['Date'],
             label=df_monthly_views_final['Video'].astype('category').cat.codes)
 
 # Titles and axis labels
-plt.title('Monthly Youtube Views of Carrie Underwood Singles',
+plt.title('Monthly YouTube Views of Carrie Underwood Singles',
           fontweight='bold',
           fontsize=20)
 plt.xlabel('Date',
@@ -298,8 +394,7 @@ plt.show()
 " Analysis - Total Views Over Time "
 # Small Multiples; total view counts for all videos over time
 
-# TODO: fix plot, likely due to no longer formatting views variable as string. Use code from plot above to format y
-#  axis values.
+# TODO: some videos are shown twice, and not in order of release.
 
 # Set style
 plt.style.use('seaborn')
