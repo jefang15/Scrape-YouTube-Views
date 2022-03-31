@@ -185,17 +185,22 @@ print(tabulate(df_export, headers='keys', tablefmt='plain', showindex=False))
 
 " Analysis - Views Since Day of Release "
 
-premiere = pd.read_csv("Projects/Scrape-YouTube-Views/Output/YouTube Views.csv", parse_dates=[0, 1])
-premiere['Days Since Release'] = (pd.to_datetime(premiere['Date']) - pd.to_datetime(premiere['Upload Date'])).dt.days.astype('int16')
-premiere = premiere.sort_values(by=['Video', 'Date']).reset_index(drop=True)
 
-# Color
-premiere_sort = premiere.sort_values('Upload Date')
-unique_videos = premiere_sort['Video'].unique()
-color_values = sns.color_palette('inferno', len(unique_videos))
-color_map = pd.DataFrame(zip(unique_videos, color_values), columns=['Video', 'Color'])
-premiere_plot = premiere.merge(color_map, how='left', left_on=['Video'], right_on=['Video'])
+def clean_views_since_premiere(df):
+    df['Days Since Release'] = (pd.to_datetime(df['Date']) - pd.to_datetime(df['Upload Date'])).dt.days.astype('int16')
+    df = df.sort_values(by=['Video', 'Date']).reset_index(drop=True)
 
+    # Color
+    df_sort = df.sort_values('Upload Date')
+    unique_videos = df_sort['Video'].unique()
+    color_values = sns.color_palette('inferno', len(unique_videos))
+    color_map = pd.DataFrame(zip(unique_videos, color_values), columns=['Video', 'Color'])
+    df_plot = df.merge(color_map, how='left', left_on=['Video'], right_on=['Video'])
+    return df_plot
+
+
+df_premiere = pd.read_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views.csv', parse_dates=[0, 1])
+plot_premiere = clean_views_since_premiere(df_premiere)
 
 
 " Plot - Views Since Day of Release "
@@ -203,9 +208,9 @@ premiere_plot = premiere.merge(color_map, how='left', left_on=['Video'], right_o
 plt.style.use('default')  # Set style
 fig, ax = plt.subplots(figsize=(14, 8))
 
-grouped = premiere_plot.groupby('Video')
+grouped = plot_premiere.groupby('Video')
 
-for video, grp in premiere_plot.groupby(['Video']):
+for video, grp in plot_premiere.groupby(['Video']):
     selection = grouped.get_group(video)
 
     ax = grp.plot(
@@ -221,7 +226,7 @@ for video, grp in premiere_plot.groupby(['Video']):
     max_views = selection['Views'].max()
     color = selection['Color'].max()
     max_days = selection['Days Since Release'].max()  # Max number of days since release for each video
-    views = float(selection[premiere_plot['Days Since Release'] == max_days]['Views'])  # Max views for each video
+    views = float(selection[plot_premiere['Days Since Release'] == max_days]['Views'])  # Max views for each video
     ax.scatter(x=[max_days], y=[views], s=70, color=[color], clip_on=False, linewidth=0)
 
     ax.annotate(
@@ -240,8 +245,8 @@ ax.tick_params(
 
 # Format x axis
 ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))  # Format y axis thousands
-plt.xticks(np.arange(0, premiere_plot['Days Since Release'].max().round(-3)+501, 500))
-ax.set_xlim([0, premiere_plot['Days Since Release'].max().round(-3)+501])
+plt.xticks(np.arange(0, plot_premiere['Days Since Release'].max().round(-3)+501, 500))
+ax.set_xlim([0, plot_premiere['Days Since Release'].max().round(-3)+501])
 
 # Format y axis
 # ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))  # Format y axis thousands
@@ -272,28 +277,34 @@ plt.show()
 
 
 
+" Analysis - Views Since Day of Release - Subset "
+
+
+def clean_views_since_premiere(df):
+    df['Days Since Release'] = (pd.to_datetime(df['Date']) - pd.to_datetime(df['Upload Date'])).dt.days.astype('int16')
+    df = df.sort_values(by=['Video', 'Date']).reset_index(drop=True)
+    df = df.loc[(df['Upload Date'] >= min(df['Date']))]
+
+    # Color
+    df_sort = df.sort_values('Upload Date')
+    unique_videos = df_sort['Video'].unique()
+    color_values = sns.color_palette('inferno', len(unique_videos))
+    color_map = pd.DataFrame(zip(unique_videos, color_values), columns=['Video', 'Color'])
+    df_plot = df.merge(color_map, how='left', left_on=['Video'], right_on=['Video'])
+    return df_plot
+
+
+df_premiere_subset = pd.read_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views.csv', parse_dates=[0, 1])
+plot_premiere_subset = clean_views_since_premiere(df_premiere_subset)
+
+
 " Plot - Views Since Day of Release - Subset "
-
-premiere_subset = pd.read_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views.csv', parse_dates=[0, 1])
-premiere_subset['Days Since Release'] = (pd.to_datetime(premiere_subset['Date']) - pd.to_datetime(premiere_subset['Upload Date'])).dt.days.astype('int16')
-premiere_subset = premiere_subset.sort_values(by=['Video', 'Date']).reset_index(drop=True)
-premiere_subset = premiere_subset.loc[(premiere_subset['Upload Date'] >= min(premiere_subset['Date']))]
-
-# Color
-premiere_subset_sort = premiere_subset.sort_values('Upload Date')
-unique_videos_subset = premiere_subset_sort['Video'].unique()
-color_values_subset = sns.color_palette('inferno', len(unique_videos_subset))
-color_map_subset = pd.DataFrame(zip(unique_videos_subset, color_values_subset), columns=['Video', 'Color'])
-premiere_subset_plot = premiere_subset.merge(color_map_subset, how='left', left_on=['Video'], right_on=['Video'])
-
-
-
 plt.style.use('default')  # Set style
 fig, ax = plt.subplots(figsize=(14, 8))
 
-grouped = premiere_subset_plot.groupby('Video')
+grouped = plot_premiere_subset.groupby('Video')
 
-for video, grp in premiere_subset_plot.groupby(['Video']):
+for video, grp in plot_premiere_subset.groupby(['Video']):
     selection = grouped.get_group(video)
 
     ax = grp.plot(
@@ -308,7 +319,7 @@ for video, grp in premiere_subset_plot.groupby(['Video']):
     max_views = selection['Views'].max()
     color = selection['Color'].max()
     max_days = selection['Days Since Release'].max()  # Max number of days since release for each video
-    views = float(selection[premiere_subset_plot['Days Since Release'] == max_days]['Views'])  # Max views for each video
+    views = float(selection[plot_premiere_subset['Days Since Release'] == max_days]['Views'])  # Max views for each video
     ax.scatter(x=[max_days], y=[views], s=70, color=[color], clip_on=False, linewidth=0)
 
     ax.annotate(
