@@ -462,10 +462,10 @@ plt.show()
 
 " Plot - Views per Month for Each Month "
 # Color
-monthly_views_sort = monthly_views.sort_values(['Date', 'Monthly Views'], ascending=False)
+monthly_views_sort = monthly_views.sort_values(['Date', 'Monthly Views'], ascending=[False, True]).copy()
 unique_videos_monthly = monthly_views_sort['Video'].unique()
 color_values_monthly = sns.color_palette('inferno', len(unique_videos_monthly))
-color_map_monthly = pd.DataFrame(zip(unique_videos_monthly, color_values_monthly), columns=['Video', 'Color'])
+color_map_monthly = pd.DataFrame(zip(unique_videos_latest_month, color_values_monthly), columns=['Video', 'Color'])
 monthly_views_plot = monthly_views.merge(color_map_monthly, how='left', left_on=['Video'], right_on=['Video']).sort_values(
     'Monthly Views', ascending=True)
 
@@ -475,7 +475,7 @@ monthly_views_plot = monthly_views.merge(color_map_monthly, how='left', left_on=
 plt.style.use('default')  # Set style
 fig, ax = plt.subplots(figsize=(14, 8))  # Set figure
 
-ordered_videos = monthly_views_plot['Video']
+ordered_videos = monthly_views_sort['Video']
 grouped = monthly_views_plot.groupby('Video')
 
 for video in ordered_videos:
