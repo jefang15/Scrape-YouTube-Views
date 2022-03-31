@@ -158,7 +158,7 @@ scraped_data['Video'] = scraped_data['Video']\
     .str.replace("(ft.).*", "", regex=True)\
     .str.replace('"', "")\
     .str.rstrip()
-
+scraped_data
 
 " Import Previously Scraped Data "
 existing_data = pd.read_csv("Projects/Scrape-YouTube-Views/Output/YouTube Views.csv", parse_dates=[0, 1])
@@ -166,8 +166,8 @@ existing_data = pd.read_csv("Projects/Scrape-YouTube-Views/Output/YouTube Views.
 
 " Append New Data to Existing Data "
 df_export = pd.concat([existing_data, scraped_data]).reset_index(drop=True)
-df_export["Date"] = pd.to_datetime(df_export["Date"])
-df_export["Upload Date"] = pd.to_datetime(df_export["Upload Date"])
+# df_export["Date"] = pd.to_datetime(df_export["Date"])
+# df_export["Upload Date"] = pd.to_datetime(df_export["Upload Date"])
 
 
 " Export to CSV "
@@ -307,7 +307,6 @@ for video, grp in premiere_subset_plot.groupby(['Video']):
         label=video,
         legend=False)
 
-    selection = grouped.get_group(video)
     max_views = selection['Views'].max()
     color = selection['Color'].max()
     max_days = selection['Days Since Release'].max()  # Max number of days since release for each video
@@ -384,14 +383,6 @@ monthly_views = monthly_views.sort_values(['Date', 'Monthly Views'], ascending=(
 monthly_views = monthly_views.loc[(monthly_views['Date'] == monthly_views['Date'].max())]
 
 
-# Format variables
-# df_monthly_views["Monthly_Views"] = (df_monthly_views.Views_Delta.apply(lambda x: "{:,}".format(x)))
-# df_monthly_views["Monthly_Views"] = pd.to_datetime(df_monthly_views["Monthly_Views"], format='%Y-%m-%d').dt.date
-
-print(tabulate(monthly_views, headers='keys', tablefmt='plain', showindex=False))
-
-
-
 " Plot - Views per Month "
 # Color
 monthly_views_sort = monthly_views.sort_values('Monthly Views', ascending=False)
@@ -403,40 +394,70 @@ monthly_views_plot = monthly_views.merge(color_map_monthly, how='left', left_on=
 
 
 
-# TODO: fix labels
+# TODO: create scatter plot with each video along x axis and multiple vertical dots for views each month and add months as labels
 plt.style.use('default')  # Set style
 fig, ax = plt.subplots(figsize=(14, 8))  # Set figure
 
-plt.scatter(x=monthly_views_plot['Video'],
-            y=monthly_views_plot['Monthly Views'],
-            c=monthly_views_plot['Color'],
-            s=150,
-            alpha=0.9,
-            edgecolors='white',
-            linewidth=1,
-            label=unique_videos_monthly)
+ordered_videos = monthly_views_plot['Video']
+grouped = monthly_views_plot.groupby('Video')
+
+for video in ordered_videos:
+    selection = grouped.get_group(video)
+
+    selection.plot(
+        ax=ax,
+        kind='scatter',
+        x='Video',
+        y='Monthly Views',
+        s=125,
+        edgecolors='white',
+        linewidth=1,
+        label=video,
+        color=selection['Color'])
 
 # Titles and axis labels
-plt.title('Monthly YouTube Views',
+plt.title('Monthly YouTube Views \n March 2022',
           fontweight='bold',
           fontsize=20)
-# plt.xlabel('Date',
+# plt.xlabel('Video',
 #            fontweight='bold',
 #            size=12)
-plt.ylabel('Monthly Views',
-           fontweight='bold',
+plt.ylabel('Views',
            size=12)
 
-ax.axes.xaxis.set_ticklabels([])
+# Format both axes
+ax.tick_params(
+        which='both',  # Applies to both major and minor ticks
+        # bottom=False,  # Turn off tick marks on x-axis
+        # left=False,  # Turn off tick marks on y-axis
+        right=False,  # Turn off tick marks on y2-axis
+        top=False,  # Turn off tick marks on top of charts
+        )
 
-# Format axes
-ax.set_ylim([0, 3000000])
-plt.yticks(np.arange(0, 3000001, 500000))
+# Plot borders
+ax.spines['top'].set_visible(False)
+# ax.spines['bottom'].set_visible(False)
+# ax.spines['left'].set_visible(False)
+ax.spines['right'].set_visible(False)
+
+# Format x-axis
+for label in ax.get_xticklabels():  # Set tick label location and angle
+    label.set_ha('right')
+    label.set_rotation(45)
+# ax.axes.xaxis.set_ticklabels([])  # Turn off tick labels
+ax.xaxis.label.set_visible(False)  # Turn off x-axis label
+
+# Format y-axis
+ax.set_ylim([0, 2500000])
+plt.yticks(np.arange(0, 2500001, 500000))
 ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
 
+# plt.legend(loc='upper center', ncol=4)  # Format legend
+ax.legend().set_visible(False)  # Hide legend
 plt.tight_layout()
-plt.legend()
 plt.show()
+
+# plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Monthly Views - March 2022.png')
 
 
 
@@ -508,17 +529,6 @@ for ax in axes_list:
 
 fig.suptitle('YouTube Views', size=15, ha='center')  # Global figure title
 
-plt.tight_layout()
+# plt.tight_layout()
 plt.show()
 
-
-
-
-
-"""
-Sources
-https://betterprogramming.pub/the-only-step-by-step-guide-youll-need-to-build-a-web-scraper-with-python-e79066bd895a
-https://github.com/angelicadietzel/data-projects/blob/master/single-page-web-scraper/imdb_scraper.py
-https://www.thepythoncode.com/article/get-youtube-data-python
-https://stackoverflow.com/questions/44502482/how-to-create-and-fill-a-list-of-lists-in-a-for-loop
-"""
