@@ -172,7 +172,7 @@ df_export = pd.concat([existing_data, scraped_data]).reset_index(drop=True)
 df_export.to_csv("Projects/Scrape-YouTube-Views/Output/YouTube Views.csv", index=False)
 
 # Print as table
-print(tabulate(df_export, headers='keys', tablefmt='plain', showindex=False))
+# print(tabulate(df_export, headers='keys', tablefmt='plain', showindex=False))
 
 
 
@@ -204,7 +204,6 @@ plot_premiere = clean_views_since_premiere(df_premiere)
 
 
 " Plot - Views Since Day of Release "
-
 plt.style.use('default')  # Set style
 fig, ax = plt.subplots(figsize=(14, 8))
 
@@ -277,7 +276,7 @@ plt.show()
 
 
 
-" Analysis - Views Since Day of Release - Subset "
+" Analysis - Views Since Day of Release Subset "
 
 
 def clean_views_since_premiere(df):
@@ -298,7 +297,7 @@ df_premiere_subset = pd.read_csv('Projects/Scrape-YouTube-Views/Output/YouTube V
 plot_premiere_subset = clean_views_since_premiere(df_premiere_subset)
 
 
-" Plot - Views Since Day of Release - Subset "
+" Plot - Views Since Day of Release Subset "
 plt.style.use('default')  # Set style
 fig, ax = plt.subplots(figsize=(14, 8))
 
@@ -373,7 +372,6 @@ plt.show()
 
 
 " Analysis - Views per Month "
-# Shows which videos consistently garner the most views and any deviations from average
 
 monthly = pd.read_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views.csv', parse_dates=[0, 1])
 
@@ -392,7 +390,7 @@ monthly_views = monthly_views.sort_values(['Date', 'Monthly Views'], ascending=(
 latest_month = monthly_views.loc[(monthly_views['Date'] == monthly_views['Date'].max())]
 
 
-" Plot - Views per Month "
+" Plot - Views per Month for Latest Month "
 # Color
 latest_month_sort = latest_month.sort_values('Monthly Views', ascending=False)
 unique_videos_latest_month = latest_month_sort['Video'].unique()
@@ -465,7 +463,7 @@ ax.legend().set_visible(False)  # Hide legend
 plt.tight_layout()
 plt.show()
 
-# plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Monthly Views - March 2022.png')
+# plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Monthly Views (March 2022).png')
 
 
 
@@ -482,7 +480,7 @@ monthly_views_plot = monthly_views.merge(color_map_monthly, how='left', left_on=
 
 
 
-# TODO: create scatter plot with each video along x axis and multiple vertical dots for views each month and add months as labels
+# TODO: Add latest month as labels
 plt.style.use('default')  # Set style
 fig, ax = plt.subplots(figsize=(14, 8))  # Set figure
 
@@ -551,8 +549,92 @@ plt.show()
 
 
 
-" Analysis - Total Views Over Time "
+" Plot - Total Views (Scatter) "
 
+
+def clean_total_views(df):
+    df = df.loc[(df['Date'] == df['Date'].max())]
+
+    # Color
+    df_reverse = df.iloc[::-1]
+    unique_videos = df_reverse['Video'].unique()
+    color_values = sns.color_palette('inferno', len(unique_videos))
+    color_map = pd.DataFrame(zip(unique_videos, color_values), columns=['Video', 'Color'])
+    df_plot = df.merge(color_map, how='left', left_on=['Video'], right_on=['Video'])
+    return df_plot
+
+
+total = pd.read_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views.csv', parse_dates=[0, 1])
+total_plot = clean_total_views(total)
+
+
+plt.style.use('default')  # Set style
+fig, ax = plt.subplots(figsize=(14, 8))  # Set figure
+
+ordered_videos = total_plot['Video']
+grouped = total_plot.groupby('Video')
+
+for video in ordered_videos:
+    selection = grouped.get_group(video)
+
+    selection.plot(
+        ax=ax,
+        kind='scatter',
+        x='Video',
+        y='Views',
+        s=125,
+        edgecolors='white',
+        linewidth=1,
+        label=video,
+        color=selection['Color'])
+
+# Titles and axis labels
+plt.title('Total YouTube Views',
+          fontweight='bold',
+          fontsize=20)
+# plt.xlabel('Video',
+#            fontweight='bold',
+#            size=12)
+plt.ylabel('Views',
+           size=12)
+
+# Format both axes
+ax.tick_params(
+        which='both',  # Applies to both major and minor ticks
+        # bottom=False,  # Turn off tick marks on x-axis
+        # left=False,  # Turn off tick marks on y-axis
+        right=False,  # Turn off tick marks on y2-axis
+        top=False,  # Turn off tick marks on top of charts
+        )
+
+# Plot borders
+ax.spines['top'].set_visible(False)
+# ax.spines['bottom'].set_visible(False)
+# ax.spines['left'].set_visible(False)
+ax.spines['right'].set_visible(False)
+
+# Format x-axis
+for label in ax.get_xticklabels():  # Set tick label location and angle
+    label.set_ha('right')
+    label.set_rotation(45)
+# ax.axes.xaxis.set_ticklabels([])  # Turn off tick labels
+ax.xaxis.label.set_visible(False)  # Turn off x-axis label
+
+# Format y-axis
+ax.set_ylim([0, 150000000])
+plt.yticks(np.arange(0, 150000001, 25000000))
+ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
+
+# plt.legend(loc='upper center', ncol=4)  # Format legend
+ax.legend().set_visible(False)  # Hide legend
+plt.tight_layout()
+plt.show()
+
+# plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Total Views.png')
+
+
+
+" Plot - Total Views (Small Multiples) "
 plt.style.use('default')
 
 fig, axes = plt.subplots(nrows=7, ncols=6, sharex='all', sharey='all', figsize=(14, 8))  # Set figure size
@@ -620,3 +702,4 @@ fig.suptitle('YouTube Views', size=15, ha='center')  # Global figure title
 # plt.tight_layout()
 plt.show()
 
+# plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Total Views Small Multiples.png')
