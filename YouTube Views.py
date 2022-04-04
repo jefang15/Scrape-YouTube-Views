@@ -143,12 +143,12 @@ scraped_data = pd.DataFrame(out, columns=df_columns)
 
 
 " Clean New DataFrame "
-scraped_data["Date"] = pd.to_datetime(scraped_data["Date"])
-scraped_data["Upload Date"] = scraped_data["Upload Date"]\
+scraped_data['Date'] = pd.to_datetime(scraped_data['Date'])
+scraped_data['Upload Date'] = scraped_data['Upload Date']\
     .str.replace(".*(Premiered)", "", regex=True)\
     .str.lstrip()
-scraped_data["Upload Date"] = pd.to_datetime(scraped_data["Upload Date"])
-scraped_data['Channel'] = scraped_data['Channel'].str.replace("BRADPAISLEY", "Brad Paisley")
+scraped_data['Upload Date'] = pd.to_datetime(scraped_data['Upload Date'])
+scraped_data['Channel'] = scraped_data['Channel'].str.replace('BRADPAISLEY', 'Brad Paisley')
 scraped_data['Video'] = scraped_data['Video']\
     .str.replace(".*(- )", "", regex=True)\
     .str.replace(".*(– )", "", regex=True)\
@@ -157,9 +157,13 @@ scraped_data['Video'] = scraped_data['Video']\
     .str.replace('"', "")\
     .str.rstrip()
 
+# Move scraped date back one day if run past midnight
+# from datetime import timedelta
+# scraped_data['Date'] = scraped_data['Date'] - timedelta(days=1)
+
 
 " Import Previously Scraped Data "
-existing_data = pd.read_csv("Projects/Scrape-YouTube-Views/Output/YouTube Views.csv", parse_dates=[0, 1])
+existing_data = pd.read_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views.csv', parse_dates=[0, 1])
 
 
 " Append New Data to Existing Data "
@@ -422,7 +426,7 @@ for video in ordered_videos:
         color=selection['Color'])
 
 # Titles and axis labels
-plt.title('Monthly YouTube Views \n March 2022',
+plt.title('Monthly YouTube Views \n April 2022',  # TODO: Change date here as necessary
           fontweight='bold',
           fontsize=20)
 # plt.xlabel('Video',
@@ -699,7 +703,7 @@ for ax in axes_list:
 
 fig.suptitle('YouTube Views', size=15, ha='center')  # Global figure title
 
-# plt.tight_layout()
+plt.tight_layout()
 plt.show()
 
 # plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Total Views Small Multiples.png')
