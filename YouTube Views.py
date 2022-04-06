@@ -1,8 +1,6 @@
-""" Scrape - YouTube Views """
 
 
 
-# Import packages
 from requests_html import HTMLSession
 from bs4 import BeautifulSoup as bs
 import pandas as pd
@@ -17,10 +15,11 @@ import seaborn as sns
 
 
 
-" List of Video Links to Track Views "
-# Add new video links here as needed
+" Videos to Track "
+# Add new video links here as desired
 
-video_links = [
+cu_music_videos_list = [
+
     # Some Hearts
     'https://www.youtube.com/watch?v=lydBPm2KRaU',  # Jesus, Take the Wheel
     'https://www.youtube.com/watch?v=lmAi_qJoPbU',  # Don't Forget to Remember Me
@@ -69,6 +68,13 @@ video_links = [
     # My Gift
     'https://www.youtube.com/watch?v=4KiFSKLTj0U',  # Hallelujah
 
+    'https://www.youtube.com/watch?v=Zc3cxj5pDIs',  # If I Didn't Love You
+
+    ]
+
+
+cu_other_videos_list = [
+
     'https://www.youtube.com/watch?v=o6teH-xJn5o',  # Tears of Gold
 
     # My Savior
@@ -76,10 +82,8 @@ video_links = [
     'https://www.youtube.com/watch?v=L6XMSPJzfEU',  # Nothing But The Blood Of Jesus
 
     'https://www.youtube.com/watch?v=d4mh4jq_MYU',  # I Wanna Remember
-    
-    'https://www.youtube.com/watch?v=kt7VSlX1HgY',  # Only Us
 
-    'https://www.youtube.com/watch?v=Zc3cxj5pDIs',  # If I Didn't Love You
+    'https://www.youtube.com/watch?v=kt7VSlX1HgY',  # Only Us
 
     # CU7
     'https://www.youtube.com/watch?v=4Y7flhznvnE'  # Ghost Story (Official Lyric Video)
@@ -87,75 +91,77 @@ video_links = [
     ]
 
 
-out = []
+
+def scrapeYoutubeViews(list_of_videos):
+    out = []
+    for video in list_of_videos:
+        session = HTMLSession()  # init an HTML Session
+        headers = {"User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"}
+        video_url = video  # YouTube video url
+        response = session.get(video_url, headers=headers)  # Get the URL contents
+        response.html.render(sleep=20, timeout=20)  # Set timeout
+        soup = bs(response.html.html, features="html.parser")  # Make URL contents easy to read
+        # print(soup.prettify())  # Open html
+        # open("video.html", "w", encoding='utf8').write(response.html.html)  # Write all HTML code into a file
+
+        # Date scraped
+        pull_date = date.today()
+
+        # Upload date
+        upload_date = soup.find("div", {"id": "info-strings"}).find("yt-formatted-string").text
+
+        # Channel name
+        channel_name = soup.find("yt-formatted-string", {"class": "ytd-channel-name"}).find("a").text
+
+        # Video title
+        video_title = soup.find("div", {"id": "container", "class": "style-scope ytd-video-primary-info-renderer"}).find(
+            "h1").text
+        print(video_title)
+
+        # Length of video
+        # video_length = soup.find("span", {"class": "ytp-time-duration"}).text
+
+        # Views
+        video_views = int(''.join([c for c in soup.find("span", attrs={"class": "view-count"}).text if c.isdigit()]))
+
+        # Likes & Dislikes
+        # text_yt_formatted_strings = soup.find_all("yt-formatted-string",
+        #                                           {"id": "text", "class": "ytd-toggle-button-renderer"})
+        # video_likes = text_yt_formatted_strings[0].text
+        # video_dislikes = text_yt_formatted_strings[1].text
+
+        # Append information about each individual video to compiled list
+        inner_list = [pull_date, upload_date, channel_name, video_title, video_views]
+
+        # Append inner list to outer list
+        out.append(inner_list)
+
+    " Create DataFrame from List of Scraped Video Information "
+    df_headers = ['Date', 'Upload Date', 'Channel', 'Video', 'Views']
+    df = pd.DataFrame(out, columns=df_headers)
+
+    " Clean New DataFrame "
+    df['Date'] = pd.to_datetime(df['Date'])
+    df['Upload Date'] = df['Upload Date'] \
+        .str.replace(".*(Premiered)", "", regex=True) \
+        .str.lstrip()
+    df['Upload Date'] = pd.to_datetime(df['Upload Date'])
+    df['Channel'] = df['Channel'].str.replace('BRADPAISLEY', 'Brad Paisley')
+    df['Video'] = df['Video'] \
+        .str.replace(".*(- )", "", regex=True) \
+        .str.replace(".*(– )", "", regex=True) \
+        .str.replace("(\().*", "", regex=True) \
+        .str.replace("(ft.).*", "", regex=True) \
+        .str.replace('"', "") \
+        .str.rstrip()
+
+    return df
 
 
-def youtube_info(url):
-    session = HTMLSession()  # init an HTML Session
-    headers = {"User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"}
-    video_url = url  # YouTube video url
-    response = session.get(video_url, headers=headers)  # Get the URL contents
-    response.html.render(sleep=20, timeout=20)  # Set timeout
-    soup = bs(response.html.html, features="html.parser")  # Make URL contents easy to read
-    # print(soup.prettify())  # Open html
-    # open("video.html", "w", encoding='utf8').write(response.html.html)  # Write all HTML code into a file
+" Apply Function to Videos "
+scraped_cu_music_videos = scrapeYoutubeViews(cu_music_videos_list)
+scraped_cu_other_videos = scrapeYoutubeViews(cu_other_videos_list)
 
-    # Date pulled
-    pull_date = date.today()
-
-    # Upload Date
-    upload_date = soup.find("div", {"id": "info-strings"}).find("yt-formatted-string").text
-
-    # Channel Name
-    channel_name = soup.find("yt-formatted-string", {"class": "ytd-channel-name"}).find("a").text
-
-    # Video Title
-    video_title = soup.find("div", {"id": "container", "class": "style-scope ytd-video-primary-info-renderer"}).find(
-        "h1").text
-    print(video_title)
-
-    # Duration
-    # video_duration = soup.find("span", {"class": "ytp-time-duration"}).text
-
-    # Views
-    video_views = int(''.join([c for c in soup.find("span", attrs={"class": "view-count"}).text if c.isdigit()]))
-
-    # Likes & Dislikes
-    # text_yt_formatted_strings = soup.find_all("yt-formatted-string",
-    #                                           {"id": "text", "class": "ytd-toggle-button-renderer"})
-    # video_likes = text_yt_formatted_strings[0].text
-    # video_dislikes = text_yt_formatted_strings[1].text
-
-    # Append information about each individual video to compiled list
-    innerlist = [pull_date, upload_date, channel_name, video_title, video_views]
-
-    # Append inner list to outer list
-    out.append(innerlist)
-
-
-for video in video_links:
-    youtube_info(video)
-
-
-" Create DataFrame from List of Scraped Video Information "
-df_columns = ['Date', 'Upload Date', 'Channel', 'Video', 'Views']
-scraped_data = pd.DataFrame(out, columns=df_columns)
-
-
-" Clean New DataFrame "
-scraped_data['Date'] = pd.to_datetime(scraped_data['Date'])
-scraped_data['Upload Date'] = scraped_data['Upload Date']\
-    .str.replace(".*(Premiered)", "", regex=True)\
-    .str.lstrip()
-scraped_data['Upload Date'] = pd.to_datetime(scraped_data['Upload Date'])
-scraped_data['Channel'] = scraped_data['Channel'].str.replace('BRADPAISLEY', 'Brad Paisley')
-scraped_data['Video'] = scraped_data['Video']\
-    .str.replace(".*(- )", "", regex=True)\
-    .str.replace(".*(– )", "", regex=True)\
-    .str.replace("(\().*", "", regex=True)\
-    .str.replace("(ft.).*", "", regex=True)\
-    .str.replace('"', "")\
-    .str.rstrip()
 
 # Move scraped date back one day if run past midnight
 # from datetime import timedelta
@@ -163,20 +169,25 @@ scraped_data['Video'] = scraped_data['Video']\
 
 
 " Import Previously Scraped Data "
-existing_data = pd.read_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views.csv', parse_dates=[0, 1])
+existing_cu_music_videos = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Music Video Views.csv', parse_dates=[0, 1])
+existing_cu_other_videos = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Other Video Views.csv', parse_dates=[0, 1])
 
 
-" Append New Data to Existing Data "
-df_export = pd.concat([existing_data, scraped_data]).reset_index(drop=True)
+" Concatenate New Data to Existing Data "
+cu_music_videos_export = pd.concat([existing_cu_music_videos, scraped_cu_music_videos]).reset_index(drop=True)
+cu_other_videos_export = pd.concat([existing_cu_other_videos, scraped_cu_other_videos]).reset_index(drop=True)
 # df_export["Date"] = pd.to_datetime(df_export["Date"])
 # df_export["Upload Date"] = pd.to_datetime(df_export["Upload Date"])
 
 
 " Export to CSV "
-df_export.to_csv("Projects/Scrape-YouTube-Views/Output/YouTube Views.csv", index=False)
+cu_music_videos_export.to_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views - CU Music Videos.csv', index=False)
+cu_other_videos_export.to_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views - CU Other Videos.csv', index=False)
+
 
 # Print as table
-# print(tabulate(df_export, headers='keys', tablefmt='plain', showindex=False))
+# print(tabulate(cu_music_videos_export, headers='keys', tablefmt='plain', showindex=False))
+# print(tabulate(cu_other_videos_export, headers='keys', tablefmt='plain', showindex=False))
 
 
 
@@ -203,7 +214,7 @@ def clean_views_since_premiere(df):
     return df_plot
 
 
-df_premiere = pd.read_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views.csv', parse_dates=[0, 1])
+df_premiere = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Music Video Views.csv', parse_dates=[0, 1])
 plot_premiere = clean_views_since_premiere(df_premiere)
 
 
@@ -233,7 +244,7 @@ for video, grp in plot_premiere.groupby(['Video']):
     ax.scatter(x=[max_days], y=[views], s=70, color=[color], clip_on=False, linewidth=0)
 
     ax.annotate(
-        video + ', ' + str(int(views/1000000)) + 'MM',
+        video + ' ' + str(int(views/1000000)) + 'M',
         xy=[max_days, views],
         xytext=[7, -2],
         textcoords='offset points')
@@ -296,8 +307,11 @@ def clean_views_since_premiere(df):
     df_plot = df.merge(color_map, how='left', left_on=['Video'], right_on=['Video'])
     return df_plot
 
+# CU Music Videos
+df_premiere_subset = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Music Video Views.csv', parse_dates=[0, 1])
+# CU Other Videos
+# df_premiere_subset = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Other Video Views.csv', parse_dates=[0, 1])
 
-df_premiere_subset = pd.read_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views.csv', parse_dates=[0, 1])
 plot_premiere_subset = clean_views_since_premiere(df_premiere_subset)
 
 
@@ -326,7 +340,7 @@ for video, grp in plot_premiere_subset.groupby(['Video']):
     ax.scatter(x=[max_days], y=[views], s=70, color=[color], clip_on=False, linewidth=0)
 
     ax.annotate(
-        video + ', ' + str(int(views/1000000)) + 'MM',
+        video + ' ' + str(int(views/1000000)) + 'M',
         xy=[max_days, views],
         xytext=[7, -2],
         textcoords='offset points')
@@ -377,7 +391,7 @@ plt.show()
 
 " Analysis - Views per Month "
 
-monthly = pd.read_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views.csv', parse_dates=[0, 1])
+monthly = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Music Video Views.csv', parse_dates=[0, 1])
 
 monthly['Year'] = monthly['Date'].dt.year
 monthly['Month'] = monthly['Date'].dt.month
@@ -568,7 +582,7 @@ def clean_total_views(df):
     return df_plot
 
 
-total = pd.read_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views.csv', parse_dates=[0, 1])
+total = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Music Video Views.csv', parse_dates=[0, 1])
 total_plot = clean_total_views(total)
 
 
@@ -644,11 +658,11 @@ plt.style.use('default')
 fig, axes = plt.subplots(nrows=7, ncols=6, sharex='all', sharey='all', figsize=(14, 8))  # Set figure size
 axes_list = [item for sublist in axes for item in sublist]  # List comprehension
 
-ordered_videos = scraped_data['Video'].head(len(video_links))  # Set order of graphs
-grouped = df_export.groupby('Video')
+ordered_videos = scraped_cu_music_videos['Video'].head(len(cu_music_videos_list))  # Set order of graphs
+grouped = cu_music_videos_export.groupby('Video')
 
-first_date = df_export['Date'].min()  # First date for x axis
-last_date = df_export['Date'].max()  # Last date for x axis
+first_date = cu_music_videos_export['Date'].min()  # First date for x axis
+last_date = cu_music_videos_export['Date'].max()  # Last date for x axis
 
 for video in ordered_videos:
     selection = grouped.get_group(video)
@@ -694,7 +708,7 @@ for video in ordered_videos:
 
     " Add annotation on each graph of the latest view count "
     max_date = selection['Date'].max()
-    views = float(selection[df_export['Date'] == max_date]['Views'])
+    views = float(selection[cu_music_videos_export['Date'] == max_date]['Views'])
     ax.scatter(x=[max_date], y=[views], s=70, clip_on=False, linewidth=0)
     ax.annotate(str(int(views/1000000)) + 'M', xy=[max_date, views], xytext=[7, -2], textcoords='offset points')
 
