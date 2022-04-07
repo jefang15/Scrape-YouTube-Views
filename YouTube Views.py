@@ -59,6 +59,8 @@ cu_music_videos_list = [
     'https://www.youtube.com/watch?v=N2-yVryNjUM',  # Church Bells
     'https://www.youtube.com/watch?v=lNzHARgbCG8',  # Dirty Laundry
 
+    'https://www.youtube.com/watch?v=GzT4p-OaJ5c',  # The Fighter
+
     # Cry Pretty
     'https://www.youtube.com/watch?v=KUUjtUP2CrE',  # Cry Pretty
     'https://www.youtube.com/watch?v=-Py8OWAMkns',  # Love Wins
@@ -74,6 +76,10 @@ cu_music_videos_list = [
 
 
 cu_other_videos_list = [
+
+    'https://www.youtube.com/watch?v=s9gAXwYZtfk',  # Forever Country
+
+    'https://www.youtube.com/watch?v=HgknAaKNaMM',  # The Champion
 
     'https://www.youtube.com/watch?v=o6teH-xJn5o',  # Tears of Gold
 
@@ -181,8 +187,8 @@ cu_other_videos_export = pd.concat([existing_cu_other_videos, scraped_cu_other_v
 
 
 " Export to CSV "
-cu_music_videos_export.to_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views - CU Music Videos.csv', index=False)
-cu_other_videos_export.to_csv('Projects/Scrape-YouTube-Views/Output/YouTube Views - CU Other Videos.csv', index=False)
+cu_music_videos_export.to_csv('Projects/Scrape-YouTube-Views/Output/CU Music Video Views.csv', index=False)
+cu_other_videos_export.to_csv('Projects/Scrape-YouTube-Views/Output/CU Other Video Views.csv', index=False)
 
 
 # Print as table
