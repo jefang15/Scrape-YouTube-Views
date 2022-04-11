@@ -91,8 +91,9 @@ cu_other_videos_list = [
 
     'https://www.youtube.com/watch?v=kt7VSlX1HgY',  # Only Us
 
-    # CU7
-    'https://www.youtube.com/watch?v=4Y7flhznvnE'  # Ghost Story (Official Lyric Video)
+    # Denim & Rhinestones
+    'https://www.youtube.com/watch?v=4Y7flhznvnE',  # Ghost Story (Official Lyric Video)
+    'https://www.youtube.com/watch?v=TYJVEYbwR4o'  # Denim & Rhinestones (Official Lyric Video)
 
     ]
 
@@ -171,7 +172,8 @@ scraped_cu_other_videos = scrapeYoutubeViews(cu_other_videos_list)
 
 # Move scraped date back one day if run past midnight
 # from datetime import timedelta
-# scraped_data['Date'] = scraped_data['Date'] - timedelta(days=1)
+# scraped_cu_music_videos['Date'] = scraped_cu_music_videos['Date'] - timedelta(days=1)
+# scraped_cu_other_videos['Date'] = scraped_cu_other_videos['Date'] - timedelta(days=1)
 
 
 " Import Previously Scraped Data "
