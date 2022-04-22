@@ -93,7 +93,8 @@ cu_other_videos_list = [
 
     # Denim & Rhinestones
     'https://www.youtube.com/watch?v=4Y7flhznvnE',  # Ghost Story (Official Lyric Video)
-    'https://www.youtube.com/watch?v=TYJVEYbwR4o'  # Denim & Rhinestones (Official Lyric Video)
+    'https://www.youtube.com/watch?v=TYJVEYbwR4o',  # Denim & Rhinestones (Official Lyric Video)
+    'https://www.youtube.com/watch?v=MPhspIX6NXo'  # Crazy Angels (Official Lyric Video)
 
     ]
 
@@ -103,11 +104,11 @@ def scrapeYoutubeViews(list_of_videos):
     out = []
     for video in list_of_videos:
         session = HTMLSession()  # init an HTML Session
-        headers = {"User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"}
+        headers = {'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'}
         video_url = video  # YouTube video url
         response = session.get(video_url, headers=headers)  # Get the URL contents
         response.html.render(sleep=20, timeout=20)  # Set timeout
-        soup = bs(response.html.html, features="html.parser")  # Make URL contents easy to read
+        soup = bs(response.html.html, features='html.parser')  # Make URL contents easy to read
         # print(soup.prettify())  # Open html
         # open("video.html", "w", encoding='utf8').write(response.html.html)  # Write all HTML code into a file
 
@@ -115,21 +116,21 @@ def scrapeYoutubeViews(list_of_videos):
         pull_date = date.today()
 
         # Upload date
-        upload_date = soup.find("div", {"id": "info-strings"}).find("yt-formatted-string").text
+        upload_date = soup.find('div', {'id': 'info-strings'}).find('yt-formatted-string').text
 
         # Channel name
-        channel_name = soup.find("yt-formatted-string", {"class": "ytd-channel-name"}).find("a").text
+        channel_name = soup.find('yt-formatted-string', {'class': 'ytd-channel-name'}).find('a').text
 
         # Video title
-        video_title = soup.find("div", {"id": "container", "class": "style-scope ytd-video-primary-info-renderer"}).find(
-            "h1").text
+        video_title = soup.find('div', {'id': 'container', 'class': 'style-scope ytd-video-primary-info-renderer'}).find(
+            'h1').text
         print(video_title)
 
         # Length of video
         # video_length = soup.find("span", {"class": "ytp-time-duration"}).text
 
         # Views
-        video_views = int(''.join([c for c in soup.find("span", attrs={"class": "view-count"}).text if c.isdigit()]))
+        video_views = int(''.join([c for c in soup.find('span', attrs={'class': 'view-count'}).text if c.isdigit()]))
 
         # Likes & Dislikes
         # text_yt_formatted_strings = soup.find_all("yt-formatted-string",
