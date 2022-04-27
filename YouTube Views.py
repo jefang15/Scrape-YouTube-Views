@@ -178,8 +178,8 @@ scraped_cu_other_videos = scrapeYoutubeViews(cu_other_videos_list)
 
 
 " Import Previously Scraped Data "
-existing_cu_music_videos = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Music Video Views.csv', parse_dates=[0, 1])
-existing_cu_other_videos = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Other Video Views.csv', parse_dates=[0, 1])
+existing_cu_music_videos = pd.read_csv('Output/CU Music Video Views.csv', parse_dates=[0, 1])
+existing_cu_other_videos = pd.read_csv('Output/CU Other Video Views.csv', parse_dates=[0, 1])
 
 
 " Concatenate New Data to Existing Data "
@@ -190,8 +190,8 @@ cu_other_videos_export = pd.concat([existing_cu_other_videos, scraped_cu_other_v
 
 
 " Export to CSV "
-cu_music_videos_export.to_csv('Projects/Scrape-YouTube-Views/Output/CU Music Video Views.csv', index=False)
-cu_other_videos_export.to_csv('Projects/Scrape-YouTube-Views/Output/CU Other Video Views.csv', index=False)
+cu_music_videos_export.to_csv('Output/CU Music Video Views.csv', index=False)
+cu_other_videos_export.to_csv('Output/CU Other Video Views.csv', index=False)
 
 
 # Print as table
@@ -223,7 +223,7 @@ def clean_views_since_premiere(df):
     return df_plot
 
 
-df_premiere = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Music Video Views.csv', parse_dates=[0, 1])
+df_premiere = pd.read_csv('Output/CU Music Video Views.csv', parse_dates=[0, 1])
 plot_premiere = clean_views_since_premiere(df_premiere)
 
 
@@ -296,7 +296,7 @@ plt.ylabel('Views',
 plt.tight_layout()
 plt.show()
 
-# plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Views Since Premiere.png')
+# plt.savefig('Output - Graphs/Views Since Premiere.png')
 
 
 
@@ -317,9 +317,9 @@ def clean_views_since_premiere(df):
     return df_plot
 
 # CU Music Videos
-df_premiere_subset = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Music Video Views.csv', parse_dates=[0, 1])
+df_premiere_subset = pd.read_csv('Output/CU Music Video Views.csv', parse_dates=[0, 1])
 # CU Other Videos
-# df_premiere_subset = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Other Video Views.csv', parse_dates=[0, 1])
+# df_premiere_subset = pd.read_csv('Output/CU Other Video Views.csv', parse_dates=[0, 1])
 
 plot_premiere_subset = clean_views_since_premiere(df_premiere_subset)
 
@@ -392,7 +392,7 @@ plt.ylabel('Views',
 plt.tight_layout()
 plt.show()
 
-# plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Views Since Premiere - Subset.png')
+# plt.savefig('Output - Graphs/Views Since Premiere - Subset.png')
 
 
 
@@ -400,7 +400,7 @@ plt.show()
 
 " Analysis - Views per Month "
 
-monthly = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Music Video Views.csv', parse_dates=[0, 1])
+monthly = pd.read_csv('Output/CU Music Video Views.csv', parse_dates=[0, 1])
 
 monthly['Year'] = monthly['Date'].dt.year
 monthly['Month'] = monthly['Date'].dt.month
@@ -490,7 +490,7 @@ ax.legend().set_visible(False)  # Hide legend
 plt.tight_layout()
 plt.show()
 
-# plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Monthly Views (March 2022).png')
+# plt.savefig('Output - Graphs/Monthly Views (March 2022).png')
 
 
 
@@ -570,7 +570,7 @@ ax.legend().set_visible(False)  # Hide legend
 plt.tight_layout()
 plt.show()
 
-# plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Monthly Views.png')
+# plt.savefig('Output - Graphs/Monthly Views.png')
 
 
 
@@ -591,7 +591,7 @@ def clean_total_views(df):
     return df_plot
 
 
-total = pd.read_csv('Projects/Scrape-YouTube-Views/Output/CU Music Video Views.csv', parse_dates=[0, 1])
+total = pd.read_csv('Output/CU Music Video Views.csv', parse_dates=[0, 1])
 total_plot = clean_total_views(total)
 
 
@@ -657,7 +657,7 @@ ax.legend().set_visible(False)  # Hide legend
 plt.tight_layout()
 plt.show()
 
-# plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Total Views.png')
+# plt.savefig('Output - Graphs/Total Views.png')
 
 
 
@@ -729,4 +729,4 @@ fig.suptitle('YouTube Views', size=15, ha='center')  # Global figure title
 plt.tight_layout()
 plt.show()
 
-# plt.savefig('Projects/Scrape-YouTube-Views/Output - Graphs/Total Views Small Multiples.png')
+# plt.savefig('Output - Graphs/Total Views Small Multiples.png')
