@@ -72,6 +72,9 @@ cu_music_videos_list = [
 
     'https://www.youtube.com/watch?v=Zc3cxj5pDIs',  # If I Didn't Love You
 
+    # Denim & Rhinestones
+    'https://www.youtube.com/watch?v=K0041eVbDt4'  # Ghost Story
+
     ]
 
 
@@ -169,6 +172,8 @@ def scrapeYoutubeViews(list_of_videos):
 " Apply Function to Videos "
 scraped_cu_music_videos = scrapeYoutubeViews(cu_music_videos_list)
 scraped_cu_other_videos = scrapeYoutubeViews(cu_other_videos_list)
+# print(tabulate(scraped_cu_music_videos, headers='keys', tablefmt='plain', showindex=False))
+# print(tabulate(scraped_cu_other_videos, headers='keys', tablefmt='plain', showindex=False))
 
 
 # Move scraped date back one day if run past midnight
@@ -192,9 +197,6 @@ cu_other_videos_export = pd.concat([existing_cu_other_videos, scraped_cu_other_v
 " Export to CSV "
 cu_music_videos_export.to_csv('Output/CU Music Video Views.csv', index=False)
 cu_other_videos_export.to_csv('Output/CU Other Video Views.csv', index=False)
-
-
-# Print as table
 # print(tabulate(cu_music_videos_export, headers='keys', tablefmt='plain', showindex=False))
 # print(tabulate(cu_other_videos_export, headers='keys', tablefmt='plain', showindex=False))
 
