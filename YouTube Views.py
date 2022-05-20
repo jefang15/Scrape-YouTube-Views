@@ -97,7 +97,8 @@ cu_other_videos_list = [
     # Denim & Rhinestones
     'https://www.youtube.com/watch?v=4Y7flhznvnE',  # Ghost Story (Official Lyric Video)
     'https://www.youtube.com/watch?v=TYJVEYbwR4o',  # Denim & Rhinestones (Official Lyric Video)
-    'https://www.youtube.com/watch?v=MPhspIX6NXo'  # Crazy Angels (Official Lyric Video)
+    'https://www.youtube.com/watch?v=MPhspIX6NXo',  # Crazy Angels (Official Lyric Video)
+    'https://www.youtube.com/watch?v=KHaKMqriOE4'  # She Don't Know (Official Lyric Video)
 
     ]
 
@@ -225,7 +226,7 @@ def clean_views_since_premiere(df):
     return df_plot
 
 
-df_premiere = pd.read_csv('Output/CU Music Video Views.csv', parse_dates=[0, 1])
+df_premiere = pd.read_csv('Output/CU Other Video Views.csv', parse_dates=[0, 1])
 plot_premiere = clean_views_since_premiere(df_premiere)
 
 
